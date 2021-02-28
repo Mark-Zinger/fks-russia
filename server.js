@@ -2,15 +2,27 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = 3000
-const db = require('./models')
+const db = require('./models');
+let session = require('express-session');
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(session({
+  secret: 'aaa2C44-4D44-WppQ38Siuyiuy',
+  cookie: { userId: 'test123'},
+  resave: true,
+  saveUninitialized: true
+}));
+
 app.get('/', (req, res) => {
-    db.User.findAll()
+    db.User.findOne()
         .then((data)=> {
-            res.render('homepage', {...data[0].dataValues} )
+            console.log(data)
+            req.session.save(function(err) {
+              // session saved
+            })
+            res.render('homepage', {...data.dataValues} )
         })
         .catch(console.error)
 })
