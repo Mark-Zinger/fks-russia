@@ -6,7 +6,7 @@ const db = require('./models');
 let session = require('express-session');
 
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "pages"));
 
 app.use(session({
   secret: 'aaa2C44-4D44-WppQ38Siuyiuy',

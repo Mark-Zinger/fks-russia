@@ -1,0 +1,8 @@
+extends ../../layout/layout
+
+block title
+    title ${pageTitle}
+
+block content
+    main#barba-wrapper
+        .barba-container(data-namespace='${pageName}')
