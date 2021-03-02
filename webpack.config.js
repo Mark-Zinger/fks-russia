@@ -1,11 +1,32 @@
-const path = require('path')
-
+const path = require('path');
+const miniCss = require('mini-css-extract-plugin');
+const minify = require('optimize-css-assets-webpack-plugin');
+ 
 module.exports = {
-    entry: {
-        main: path.resolve(__dirname, './src/index.js'),
-    },
-    output: {
-        path: path.resolve(__dirname, './public'),
-        filename: '[name].bundle.js',
-    },
-}
+	mode: 'development',
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, 'public'),
+		filename: 'main.js'
+	},
+	module: {
+		rules: [{
+			test:/.(s*)css$/,
+			use: [
+				miniCss.loader,
+				'css-loader',
+				'sass-loader',
+			]
+		}]
+	},
+	optimization: {
+		minimizer: [
+			new minify({})
+		],
+	},
+	plugins: [
+		new miniCss({
+			filename: './style.css',
+		}),
+	]
+};

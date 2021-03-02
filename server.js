@@ -6,7 +6,7 @@ const db = require('./models');
 let session = require('express-session');
 
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "pages"));
+app.set("views", path.join(__dirname, "src/pages"));
 
 app.use(session({
   secret: 'aaa2C44-4D44-WppQ38Siuyiuy',
@@ -15,16 +15,19 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
-    db.User.findOne()
-        .then((data)=> {
-            console.log(data)
-            req.session.save(function(err) {
-              // session saved
-            })
-            res.render('homepage', {...data.dataValues} )
-        })
-        .catch(console.error)
+    // db.User.findOne()
+    //   .then((data)=> {
+    //       console.log(data)
+    //       req.session.save(function(err) {
+    //         // session saved
+    //       })
+    //       res.render('homepage', {...data.dataValues} )
+    //   })
+    //   .catch(console.error)
+    res.render('homepage')
 })
 
 app.listen(port, () => {
