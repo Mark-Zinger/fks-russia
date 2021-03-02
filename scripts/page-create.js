@@ -2,13 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const pages = require('../pages/pagelist.json');
 
+const scriptDir = __dirname;
 
 const pageName = process.argv[2];
 if (!pageName) {
     console.log('Укажите имя страницы');
     return;
 }
-const pageDir = path.join('pages', pageName);
+const pageDir = path.join(__dirname,'../pages', pageName);
 if (fs.existsSync(pageDir)) {
     console.log(`Страница ${pageName} уже существует`);
     return;
@@ -23,21 +24,23 @@ const pageData = {
     title: pageTitle,
 };
 console.log(pageDir);
-// pages.push(pageData);
-// fs.writeFileSync('../pages/pagelist.json', JSON.stringify(pages, null, 2));
-// fs.mkdirSync(pageDir);
 
-// const pagePugTemplate = fs.readFileSync(path.join('scripts','template', 'page.pugtpl')).toString();
-// fs.writeFileSync(path.join(pageDir, `${pageName}.pug`), eval('`' + pagePugTemplate + '`'));
-// const pageJsTemplate = fs.readFileSync(path.join('scripts','template', 'page.jstpl')).toString();
+pages.push(pageData);
+console.log(__dirname);
+fs.writeFileSync(path.join(scriptDir,'../pages/pagelist.json'), JSON.stringify(pages, null, 2));
+fs.mkdirSync(pageDir);
 
-// fs.writeFileSync(path.join(pageDir, `${pageName}.js`), eval('`' + pageJsTemplate  + '`'));
+const pagePugTemplate = fs.readFileSync(path.join(scriptDir,'template', 'page.pugtpl')).toString();
+fs.writeFileSync(path.join(pageDir, `${pageName}.pug`), eval('`' + pagePugTemplate + '`'));
+const pageJsTemplate = fs.readFileSync(path.join(scriptDir,'template', 'page.jstpl')).toString();
 
-// fs.writeFileSync(path.join(pageDir, `${pageName}.scss`), `.${pageName} {\n    \n}`);
+fs.writeFileSync(path.join(pageDir, `${pageName}.js`), eval('`' + pageJsTemplate  + '`'));
 
-// const commonCssFilePath = path.join('pages','common.scss');
-// let commonCssContent = fs.readFileSync(commonCssFilePath).toString();
-//     commonCssContent += `@import '../../pages/${pageName}/${pageName}';\n`;
-// fs.writeFileSync(commonCssFilePath, commonCssContent);
+fs.writeFileSync(path.join(pageDir, `${pageName}.scss`), `.${pageName} {\n    \n}`);
+
+const commonCssFilePath = path.join(scriptDir,'../pages','common.scss');
+let commonCssContent = fs.readFileSync(commonCssFilePath).toString();
+    commonCssContent += `@import '../../pages/${pageName}/${pageName}';\n`;
+fs.writeFileSync(commonCssFilePath, commonCssContent);
 
 console.log(`Страница ${pageName} создана`);
