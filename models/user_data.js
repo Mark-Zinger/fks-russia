@@ -15,10 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'user_data',
     modelName: 'UserData'
   });
-  UserData.hasOne(UserAuth,
-    {
-      foreignKey: "userId"
-    }
-  );
+  // UserData.hasOne(UserAuth,
+  //   {
+  //     foreignKey: "userId"
+  //   }
+  // );
   return UserData;
 };

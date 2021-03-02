@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }};
   TournamentList.init({
     userId: DataTypes.STRING,
-    idTour: DataTypes.INTTEGER,
+    idTour: DataTypes.INTEGER,
     isActual: DataTypes.BOOLEAN
   }, {
     sequelize,

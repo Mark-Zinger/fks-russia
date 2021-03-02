@@ -1,5 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
+const UserData = require('./user_data');
+
 module.exports = (sequelize, DataTypes) => {
   class UserAuth extends Model { static associate(models) {} };
   UserAuth.init({
@@ -17,6 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'user_auth',
     modelName: 'UserAuth'
   });
-  UserAuth.belongsTo(UserData);
+  // UserAuth.belongsTo(UserData);
   return UserAuth;
 };

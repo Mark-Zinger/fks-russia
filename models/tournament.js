@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     console.log(models);
   }};
   Tournament.init({
-    idTour: DataTypes.INTTEGER,
+    idTour: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     dateBegin: DataTypes.DATE,
