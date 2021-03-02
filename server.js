@@ -15,6 +15,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
     // db.User.findOne()
     //   .then((data)=> {
