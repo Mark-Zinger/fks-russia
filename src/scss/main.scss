@@ -1,6 +1,52 @@
-
-
-body {
-    background: red;
+html,
+body,
+ul,
+li {
+  margin:  0;
+  padding: 0;
+  list-style-type: none;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav{
+    display: flex;
+    height: 60px;
+    background-color: rgba(131, 131, 131, 0.753);
+    justify-content: space-between;
+    flex-direction: row;
+    ul{
+        display: flex;
+        flex-direction: row;
+        li{
+            text-align: center;
+            padding: 0px 5px 0px 5px;
+            a{
+                display: block;
+                font-weight: bold;
+                padding: 0px 5px 0px 5px;
+                line-height: 60px;
+            }
+            a:hover{
+                background-color: rgba(80, 80, 80, 0.753);
+            }
+        }
+    }
+    #auth_block{
+        display: inline;
+        #reg_button {
+            #auth_button{
+                display: block;
+                font-weight: bold;
+                padding: 0px 5px 0px 5px;
+                line-height: 60px;
+                #reg_button:hover{
+                    color: rgba(80, 80, 80, 0.753);
+                }
+            }
+        }
+    }
+}
