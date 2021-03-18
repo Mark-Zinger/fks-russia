@@ -7,16 +7,15 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/scss/main.scss":
 /*!****************************!*\
   !*** ./src/scss/main.scss ***!
   \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://fks-russia/./src/scss/main.scss?");
+eval("throw new Error(\"Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\\nSassError: expected \\\"}\\\".\\n   ╷\\n78 │     width: 100%;  !important;\\r\\n   │                   ^\\n   ╵\\n  src\\\\scss\\\\main.scss 78:19  root stylesheet\\n    at processResult (D:\\\\test\\\\fks-russia\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:598:19)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:692:5\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:399:11\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:251:18\\n    at context.callback (D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:124:13)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass-loader\\\\dist\\\\index.js:54:7\\n    at Function.call$2 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:91729:16)\\n    at _render_closure1.call$2 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:80373:12)\\n    at _RootZone.runBinary$3$3 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:27269:18)\\n    at _FutureListener.handleError$1 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:25797:19)\");\n\n//# sourceURL=webpack://fks-russia/./src/scss/main.scss?");
 
 /***/ }),
 
@@ -26,6 +25,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n\n\n//# sourceURL=webpack://fks-russia/./src/index.js?");
 
 /***/ })
