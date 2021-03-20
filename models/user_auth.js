@@ -5,6 +5,7 @@ const UserData = require('./user_data');
 module.exports = (sequelize, DataTypes) => {
   class UserAuth extends Model { static associate(models) {} };
   UserAuth.init({
+   
     email: {
         type: DataTypes.STRING,
         validate: {
@@ -13,11 +14,12 @@ module.exports = (sequelize, DataTypes) => {
         unique: true
     },
     userId: DataTypes.STRING,
-    pwd: DataTypes.STRING,
+    password: DataTypes.STRING,
   }, {
     sequelize,
     tableName: 'user_auth',
-    modelName: 'UserAuth'
+    modelName: 'UserAuth',
+    timestamps: false
   });
   // UserAuth.belongsTo(UserData);
   return UserAuth;

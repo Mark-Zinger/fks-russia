@@ -1,0 +1,14 @@
+
+.button {
+    background: $primary-blue;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    width: fit-content;
+    cursor: pointer;
+
+    &:hover {
+        
+    }
+}

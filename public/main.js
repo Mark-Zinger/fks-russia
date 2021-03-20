@@ -15,7 +15,7 @@
   \****************************/
 /***/ (() => {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\\nSassError: expected \\\"}\\\".\\n   ╷\\n78 │     width: 100%;  !important;\\r\\n   │                   ^\\n   ╵\\n  src\\\\scss\\\\main.scss 78:19  root stylesheet\\n    at processResult (D:\\\\test\\\\fks-russia\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:598:19)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:692:5\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:399:11\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:251:18\\n    at context.callback (D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:124:13)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass-loader\\\\dist\\\\index.js:54:7\\n    at Function.call$2 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:91729:16)\\n    at _render_closure1.call$2 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:80373:12)\\n    at _RootZone.runBinary$3$3 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:27269:18)\\n    at _FutureListener.handleError$1 (D:\\\\test\\\\fks-russia\\\\node_modules\\\\sass\\\\sass.dart.js:25797:19)\");\n\n//# sourceURL=webpack://fks-russia/./src/scss/main.scss?");
+eval("throw new Error(\"Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\\nError: Can't resolve 'sim-arrow-left.png' in 'D:\\\\test\\\\fks-russia\\\\src\\\\scss'\\n    at finishWithoutResolve (D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\Resolver.js:293:18)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\Resolver.js:362:15\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\Resolver.js:410:5\\n    at eval (eval at create (D:\\\\test\\\\fks-russia\\\\node_modules\\\\tapable\\\\lib\\\\HookCodeFactory.js:33:10), <anonymous>:16:1)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\Resolver.js:410:5\\n    at eval (eval at create (D:\\\\test\\\\fks-russia\\\\node_modules\\\\tapable\\\\lib\\\\HookCodeFactory.js:33:10), <anonymous>:27:1)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\DescriptionFilePlugin.js:87:43\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\Resolver.js:410:5\\n    at eval (eval at create (D:\\\\test\\\\fks-russia\\\\node_modules\\\\tapable\\\\lib\\\\HookCodeFactory.js:33:10), <anonymous>:15:1)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\enhanced-resolve\\\\lib\\\\Resolver.js:410:5\\n    at processResult (D:\\\\test\\\\fks-russia\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:598:19)\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\webpack\\\\lib\\\\NormalModule.js:692:5\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:399:11\\n    at D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:251:18\\n    at context.callback (D:\\\\test\\\\fks-russia\\\\node_modules\\\\loader-runner\\\\lib\\\\LoaderRunner.js:124:13)\\n    at Object.loader (D:\\\\test\\\\fks-russia\\\\node_modules\\\\css-loader\\\\dist\\\\index.js:155:5)\\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)\");\n\n//# sourceURL=webpack://fks-russia/./src/scss/main.scss?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("throw new Error(\"Module build failed (from ./node_modules/mini-css-extrac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n\n\n//# sourceURL=webpack://fks-russia/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_main_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\n//# sourceURL=webpack://fks-russia/./src/index.js?");
 
 /***/ })
 
@@ -56,6 +56,35 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports

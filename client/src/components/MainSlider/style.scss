@@ -1,0 +1,55 @@
+.main-slider {
+    height: 600px;
+    .swiper-pagination-bullet {
+        background: white;
+    }
+    &__slide {
+        position: relative;
+        color: white;
+    }   
+    &__background {
+        position: absolute;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+    &__content {
+        margin: 160px 0 0 10%;
+    }
+    &__title {
+        margin-top: 160px;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        margin-left: 10%;
+    }
+    &__counter {
+        margin-bottom: 20px;
+        margin-left: 10%;
+
+    }
+    &__name {
+        font-size: 42px;
+        font-weight: 500;
+        margin-left: 10%;
+
+    }
+    &__game {
+        margin-bottom: 20px;
+        margin-left: 10%;
+
+    }
+    &__award {
+        margin-left: 10%;
+
+        &-fond {
+            font-size: 42px;
+            margin-bottom: 20px;
+            margin-left: 10%;
+        }
+    }
+    &__button {
+        margin-left: 10%;
+    }
+}

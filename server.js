@@ -1,30 +1,45 @@
-const express = require('express');
-const path = require('path');
-const db = require('./models');
-let session = require('express-session');
+const express = require('express')
+const config = require('config')
+const path = require('path')
+const bodyParser = require('body-parser');
+const db = require('./models')
+// const mongoose = require('mongoose')
+console.log(db);
+const app = express()
 
-const app = express();
-const port = 3000
+// app.use(express.json({ extended: true }))
 
-
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "src/pages"));
-
-app.use(session({
-  secret: 'aaa2C44-4D44-WppQ38Siuyiuy',
-  cookie: { userId: 'test123'},
-  resave: true,
-  saveUninitialized: true
+app.use(bodyParser.urlencoded({
+  extended: true
 }));
 
-app.use(express.static(__dirname + '/public'));
+app.use('/auth', require('./routes/auth.routes'))
+// app.use('/api/link', require('./routes/link.routes'))
+// app.use('/t', require('./routes/redirect.routes'))
 
-const mainRoute = require("./routes/main");
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.join(__dirname, 'client', 'build')))
 
-app.use(mainRoute);
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+const PORT = config.get('port') || 5000
 
-exports.app = app;
+async function start() {
+  try {
+    // await mongoose.connect(config.get('mongoUri'), {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true
+    // })
+    app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+  } catch (e) {
+    console.log('Server Error', e.message)
+    process.exit(1)
+  }
+}
+
+start()
+
