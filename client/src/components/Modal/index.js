@@ -40,7 +40,7 @@ const Modal = ({ showModal, children, closeModal, className, ...ownProps }) => {
                                 stiffness: 300 } 
                 }} 
                 exit={{ opacity: 0, scale: 0.5,  
-                        transition: { duration: 0.6 } }}> 
+                        transition: { duration: 0.3 } }}> 
                 <motion.div
                   className={`ModalContent ${className}`} 
                   initial={{ y: -30, opacity: 0 }} 

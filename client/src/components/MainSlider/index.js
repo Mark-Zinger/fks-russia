@@ -21,6 +21,7 @@ export default () => {
       autoplay={{delay: 5000}}
       speed={700}
       loop={true}
+      draggable={true}
       pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}

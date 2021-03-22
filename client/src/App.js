@@ -1,22 +1,13 @@
 import React from 'react';
-import Header from './components/Header'
-import MainSlider from './components/MainSlider'
-import ScrollContainer from './components/ScrollContainer'
-import RecommendationList from './components/RecommendationList';
-import './App.scss';
+import Layout from './components/Layout';
+import { Provider } from 'react-redux';
+import store from './app/store'
 
 function App() {
   return (
-    <>
-    <Header/>
-
-    <ScrollContainer>
-      <div className="App">
-        <MainSlider/>
-        <RecommendationList/>
-      </div>
-    </ScrollContainer>
-    </>
+    <Provider store={store}>
+      <Layout/>
+    </Provider>
   );
 }
 

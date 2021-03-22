@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 
 
-export default ({className,placeholder, onChange, ...ownProps}) => {
+export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) => {
     
   const [isFull, setIsFull] = useState(false)
 
@@ -17,6 +17,7 @@ export default ({className,placeholder, onChange, ...ownProps}) => {
   return (
       <div className={`input__container ${isFull?'input_active':''}`}>
           <input 
+            ref={ref}
             type="text" 
             className={`input ${className}`}
             onChange={onChangeHandler} 
@@ -25,5 +26,5 @@ export default ({className,placeholder, onChange, ...ownProps}) => {
           <div className="input__placeholder">{placeholder}</div>
       </div>
   )
-}
+})
 

@@ -4,7 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser');
 const db = require('./models')
 // const mongoose = require('mongoose')
-console.log(db);
+
 const app = express()
 
 // app.use(express.json({ extended: true }))
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const PORT = config.get('port') || 5000
+const PORT =  5000
 
 async function start() {
   try {

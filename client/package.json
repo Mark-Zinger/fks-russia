@@ -26,6 +26,7 @@
     "page:create": "node scripts/page/create.js",
     "page:remove": "node scripts/page/remove.js"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class TournamentList extends Model { static associate(models) {
-    console.log(models);
+
   }};
   TournamentList.init({
     userId: DataTypes.STRING,

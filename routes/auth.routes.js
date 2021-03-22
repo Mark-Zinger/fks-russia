@@ -46,12 +46,12 @@ router.post(
   }
 })
 
-// /api/auth/login
+// /auth/login
 router.post(
   '/login',
   [
-    check('email', 'Введите корректный email').normalizeEmail().isEmail(),
-    check('password', 'Введите пароль').exists()
+    // check('email', 'Введите корректный email').normalizeEmail().isEmail(),
+    // check('password', 'Введите пароль').exists()
   ],
   async (req, res) => {
   try {
@@ -65,9 +65,10 @@ router.post(
     }
 
     const {email, password} = req.body
+    console.log(email, password);
 
     const [user] = await User.findAll({ where: {email} })
-
+    console.log(user);
     if (!user) {
       return res.status(400).json({ message: 'Пользователь не найден' })
     }
@@ -86,8 +87,8 @@ router.post(
 
     res.json({ token, userId: user.id })
 
-  } catch (e) {
-    res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+  } catch ({message}) {
+    res.status(500).json({ message })
   }
 })
 

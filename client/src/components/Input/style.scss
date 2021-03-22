@@ -25,12 +25,12 @@
         
     }
 
-    .input:hover + &, .input:focus + &, .input_active & {  
+    &__container:hover &__placeholder, .input:focus &__placeholder, .input_active &__placeholder {  
         color: white;
         transform: translate(-10px, -37px);
     }
 
-    &_active {
+    &_active, &__container:hover {
         margin-top: 20px;
     }
 }
