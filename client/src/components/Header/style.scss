@@ -5,12 +5,12 @@
     position: fixed;
     left: 0; top: 0;
     box-sizing: 0 2px 12px 0 rgb(0 0 0 / 31%), inset 0 -1px 0 0 hsl(0deg 0% 100% / 1);
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
     z-index: 20;
 
     &__wrapper {
         height: 100%;
-        width: 90%;
+        width: 22*$col-abs;
         margin: 0 auto;
         display: flex;
         align-items: center;
@@ -19,12 +19,12 @@
     &__logo {
         color: white;
         font-weight: 700;
-        margin-right: 30px;
+        width: 3*$col-abs;
     }
     
     &__menu {
         height: 100%;
-        width: 70%;
+        width: 14*$col-abs;
         display: flex;
         align-items: center;
         justify-content: center;

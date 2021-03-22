@@ -1,2 +1,8 @@
+
+$grid-columns: 24 !default;
+$col-width: 100vw / $grid-columns;
+
+$col-abs: $col-width;
+
 @import './colors.scss';
-@import './components.scss'
+@import './components.scss';

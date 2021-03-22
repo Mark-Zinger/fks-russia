@@ -1,5 +1,7 @@
 .main-slider {
     height: 600px;
+    margin-bottom: 100px;
+    z-index: 0 !important;
     .swiper-pagination-bullet {
         background: white;
     }

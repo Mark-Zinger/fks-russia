@@ -5,7 +5,7 @@ import ScrollContainer from './components/ScrollContainer'
 import RecommendationList from './components/RecommendationList';
 import './App.scss';
 
-function App() {
+function Layout() {
   return (
     <>
     <Header/>
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default Layout;

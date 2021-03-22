@@ -1,5 +1,7 @@
 import React from 'react';
-import './style.scss';
+import HeaderAuth from '../HeaderAuth'
+
+
 
 
 export default (props) => {
@@ -10,6 +12,7 @@ export default (props) => {
                 <div className="header__menu">
                     <HeaderMenuLink/>
                 </div>
+                <HeaderAuth/>
             </div>
             
         </div>

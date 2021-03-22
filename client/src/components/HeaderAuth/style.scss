@@ -1,0 +1,19 @@
+.header__auth {
+    color: white;
+    height: 100%;
+    width: 4*$col-abs;
+    margin-left: 2*$col-abs;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &-link {
+        cursor: pointer;
+        color: rgba($color: white, $alpha: .8);
+        transition: color .3s ease;
+        padding: 10px;
+        &:hover {
+            color: white;
+        }
+    }
+}
+

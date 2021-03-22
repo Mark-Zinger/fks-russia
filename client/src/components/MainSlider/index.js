@@ -19,19 +19,20 @@ export default () => {
       parallax={true}
       navigation
       autoplay={{delay: 5000}}
+      speed={700}
       loop={true}
       pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
       {
-          new Array(6).fill('')
-          .map( (_, i) => (
-            <SwiperSlide className="main-slider__slide">
-                <SlideContent img={`/img/main-slider/${i+1}.jpg`}/>
-            </SwiperSlide>
-            )
+        new Array(6).fill('')
+        .map( (_, i) => (
+          <SwiperSlide className="main-slider__slide">
+              <SlideContent img={`/img/main-slider/${i+1}.jpg`}/>
+          </SwiperSlide>
           )
+        )
       }
     </Swiper>
   );
