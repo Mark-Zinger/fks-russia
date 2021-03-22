@@ -2,8 +2,4 @@ echo "
 /node_modules
 .DS_Store
 .env" >> .gitignore
-<<<<<<< HEAD
 config/*
-=======
-public
->>>>>>> e64f24a287311f5f6f985a5fe8a422d4af8b0134
