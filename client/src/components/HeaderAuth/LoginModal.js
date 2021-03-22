@@ -12,7 +12,8 @@ const LoginModal = ({showModal,closeModal}) => {
           className={"modal_login"}
         >
           <div className="modal__title">Вход</div>
-          <Input/>
+          <Input placeholder={"Логин или Email"}/>
+          <Input placeholder={"Пароль"}/>
           <button onClick={closeModal}>close</button>
         </Modal>
     )

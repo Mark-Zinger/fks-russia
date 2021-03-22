@@ -1,3 +1,36 @@
 .input {
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
+    height: 35px;
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;  
+    border-radius: 3px;
+    border: none;
+    &:focus {
+        outline: none;
+    }
+    &__container {
+        position: relative;
+        margin-top: 0;
+        transition: margin .3s ease;
+    }
+    &__placeholder {
+        position: absolute;
+        left: 15px;
+        top: 6px;
+        color: black;
+        transition: color .3s ease, transform .3s ease;
+        pointer-events: none;
+
+        
+    }
+
+    .input:hover + &, .input:focus + &, .input_active & {  
+        color: white;
+        transform: translate(-10px, -37px);
+    }
+
+    &_active {
+        margin-top: 20px;
+    }
 }
