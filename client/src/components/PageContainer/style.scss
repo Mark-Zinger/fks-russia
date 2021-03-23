@@ -1,0 +1,26 @@
+.page-container {
+    position: relative;
+    min-height: 100vh;
+
+    &__title {
+        position: absolute;
+        top: 50px; left: 50%;
+        transform: translateX(-50%);
+        font-size: 160px;
+        font-weight: 700;
+        opacity: 0.3;
+        text-transform: uppercase;
+        user-select: none;
+
+    }
+    &__body {
+        position: relative;
+    }
+    &__background {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        opacity: .5;
+    }
+}

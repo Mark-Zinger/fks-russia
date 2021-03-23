@@ -25,7 +25,7 @@ const HeaderMenuLink = () => {
     const links = [
         { title: 'НОВОСТИ', href: '/news'},
         { title: 'ТУРНИРЫ', href: '/tournaments'},
-        { title: 'РЕЙТИНГИ', href: '/news'},
+        { title: 'КОМАНДЫ', href: '/news'},
         { title: 'НОВОСТИ', href: '/news'},
         { title: 'ВИДЕО', href: '/news'},
 

@@ -13,9 +13,9 @@ module.exports = {
       userName: { type: Sequelize.STRING},
       createAt: { 
         type: Sequelize.DATE,
-        
       },
-      avatar: { type: Sequelize.STRING }
+      avatar: { type: Sequelize.STRING },
+      role: Sequelize.STRING(8),
     });
   },
   down: async (queryInterface, Sequelize) => {

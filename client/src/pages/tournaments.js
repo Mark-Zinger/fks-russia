@@ -1,12 +1,15 @@
 import React from 'react';
-import RecommendationList from '../components/RecommendationList';
+import PageContainer from '../components/PageContainer'
 
 export default (params) => {
     
   return (
-    <>
-      <RecommendationList/>
-    </>
+    <PageContainer 
+      title={"Турниры"}
+      background="/resources/images/background/csgo.jpg"
+    >
+      
+    </PageContainer>
   )
 }
 
