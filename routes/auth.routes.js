@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
-const User = require('../models').UserAuth
+const { UserAuth, UserData } = require('../models');
 const router = Router()
 
 // /auth/register
@@ -26,17 +26,17 @@ router.post(
     }
 
     const {email, password} = req.body
-    console.log(req.body);
+   
 
-    console.log(typeof User);
-    const [candidate] = await User.findAll({ where: {email} })
+    
+    const [candidate] = await UserAuth.findAll({ where: {email} })
     
     if (candidate) {
       return res.status(400).json({ message: 'Такой пользователь уже существует' })
     }
 
     const hashedPassword = await bcrypt.hash(password, 12)
-    const user = await User.create({ email, password: hashedPassword, userId: email+password  });
+    const user = await UserAuth.create({ email, password: hashedPassword, userId: email+password  });
 
     res.status(201).json({ ...user })
 
@@ -67,7 +67,12 @@ router.post(
     const {email, password} = req.body
     console.log(email, password);
 
-    const [user] = await User.findAll({ where: {email} })
+    const [user] = await UserAuth.findAll({ 
+      where: {email},
+      include: [{
+        model: UserData
+      }]
+    })
     console.log(user);
     if (!user) {
       return res.status(400).json({ message: 'Пользователь не найден' })
@@ -79,13 +84,21 @@ router.post(
       return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
     }
 
+    console.log('USER:',user);
+
     const token = jwt.sign(
       { userId: user.id },
       config.get('jwtSecret'),
       { expiresIn: '1h' }
     )
 
-    res.json({ token, userId: user.id })
+    res.json({ 
+      token, 
+      userId: user.id,
+      email: user.email, 
+      username: user.UserDatum.userName,
+      avatar: user.UserDatum.avatar
+    })
 
   } catch ({message}) {
     res.status(500).json({ message })

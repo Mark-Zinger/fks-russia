@@ -104,6 +104,7 @@ export const userSlice = createSlice({
   initialState: {
     username: '',
     email: '',
+    avatar: '',
     token: null,
     isFetching: false,
     isSuccess: false,
@@ -128,18 +129,25 @@ export const userSlice = createSlice({
       state.username = payload.user.name;
     },
     [signupUser.pending]: (state) => {
+      console.log('pending')
       state.isFetching = true;
     },
     [signupUser.rejected]: (state, { payload }) => {
+      console.log('rejected', payload)
       state.isFetching = false;
       state.isError = true;
       state.errorMessage = payload.message;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
+      console.log('fulfilled', payload);
+      state.token = payload.token;
+      state.avatar = payload.avatar;
       state.email = payload.email;
-      state.username = payload.name;
+      state.username = payload.username;
       state.isFetching = false;
       state.isSuccess = true;
+      state.isError = false;
+
       return state;
     },
     [loginUser.rejected]: (state, { payload }) => {

@@ -1,23 +1,30 @@
 'use strict';
 const { Model } = require('sequelize');
-const user_auth = require('./user_auth');
+const UserAuth = require('./user_auth');
+
 module.exports = (sequelize, DataTypes) => {
   class UserData extends Model { static associate(models) {
+
+    UserData.belongsTo(models.UserAuth, {
+      foreignKey: 'id',
+      onDelete: 'CASCADE'
+    });
   }};
   UserData.init({
     userId: DataTypes.STRING,
-    nickName: DataTypes.STRING(32),
-    createdAt: DataTypes.DATE,
+    userName: DataTypes.STRING(32),
     avatar: DataTypes.STRING,
   }, {
     sequelize,
     tableName: 'user_data',
-    modelName: 'UserData'
+    modelName: 'UserData',
+    timestamps: false,
   });
-  // UserData.hasOne(UserAuth,
-  //   {
-  //     foreignKey: "userId"
-  //   }
-  // );
+
+  // UserData.belongsTo(UserAuth, {
+  //   foreignKey: 'userId',
+  //   onDelete: 'CASCADE'
+  // });
+  
   return UserData;
 };

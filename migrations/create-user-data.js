@@ -10,8 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: { type: Sequelize.STRING },
-      nickName: { type: Sequelize.STRING},
-      createAt: { type: Sequelize.DATE },
+      userName: { type: Sequelize.STRING},
+      createAt: { 
+        type: Sequelize.DATE,
+        
+      },
       avatar: { type: Sequelize.STRING }
     });
   },

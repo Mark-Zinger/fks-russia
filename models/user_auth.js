@@ -1,9 +1,15 @@
 'use strict';
 const { Model } = require('sequelize');
-const UserData = require('./user_data');
+const UserData = require('./user_data')
+
 
 module.exports = (sequelize, DataTypes) => {
-  class UserAuth extends Model { static associate(models) {} };
+  class UserAuth extends Model { 
+    static associate(models) {
+      UserAuth.hasOne(models.UserData, {
+        foreignKey: 'id',
+      })
+  } };
   UserAuth.init({
    
     email: {
@@ -21,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'UserAuth',
     timestamps: false
   });
-  // UserAuth.belongsTo(UserData);
+
+  // UserAuth.hasOne(UserData, {
+  //   foreignKey: 'userId',
+  // })
+  
   return UserAuth;
 };

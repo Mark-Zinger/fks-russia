@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, useEffect } from 'react';
 
 
 export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) => {
@@ -13,6 +13,9 @@ export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) 
     }
     if(onChange) onChange(e);
   }
+  useEffect(() =>{
+    if(ref.current.value.trim()) setIsFull(true);
+  },[])
 
   return (
       <div className={`input__container ${isFull?'input_active':''}`}>
