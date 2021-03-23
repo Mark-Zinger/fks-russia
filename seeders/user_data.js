@@ -6,8 +6,8 @@ module.exports = {
       {
         userName: "Mark Zinger",
         userId: "testemail@email.comпароль12",
-        avatar: "/resources/user_avatar/test_avatar.png",
-        // createAt: new Date ()
+        avatar: "/resources/images/user_avatar/test_avatar.png",
+        createAt: new Date ()
       },
     ], {
       

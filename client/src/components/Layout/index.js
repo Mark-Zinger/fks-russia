@@ -3,19 +3,18 @@ import Header from '../Header'
 import MainSlider from '../MainSlider'
 import ScrollContainer from '../ScrollContainer'
 import RecommendationList from '../RecommendationList';
-import '../../App.scss';
+import '../../Layout.scss';
 
 
 
-function Layout() {
+function Layout({children}) {
   return (
     <>
     <Header/>
 
     <ScrollContainer>
-      <div className="App">
-        <MainSlider/>
-        <RecommendationList/>
+      <div className="Layout">
+        {children}
       </div>
     </ScrollContainer>
     </>

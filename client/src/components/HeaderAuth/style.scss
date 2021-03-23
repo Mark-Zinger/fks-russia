@@ -16,4 +16,14 @@
         }
     }
 }
+.header__user {
+    justify-content: center;
 
+    &-name {
+        margin-right: 10px;
+    }
+    &-avatar {
+        height: 30px;
+        border-radius: 50%;
+    }
+}

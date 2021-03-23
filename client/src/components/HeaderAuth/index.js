@@ -5,7 +5,7 @@ import LoginModal from './LoginModal';
 
 const AuthBar = (params) => {
   const {isSuccess, username, avatar} = useSelector(userSelector)
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>

@@ -47,8 +47,19 @@ const LoginModal = ({showModal,closeModal,isFetching, errorMessage, isError, isS
             Авторизация
             <Error messege={errorMessage}/>
           </div>
-          <Input ref={loginInputRef} placeholder={"Логин или Email"} name="email" value="testemail@email.com"/>
-          <Input ref={passwordInputRef} placeholder={"Пароль"} name="password" type="password" value="пароль12" />
+          <Input 
+            ref={loginInputRef} 
+            placeholder={"Логин или Email"} 
+            name="email" 
+            // value="testemail@email.com"
+          />
+          <Input 
+            ref={passwordInputRef} 
+            placeholder={"Пароль"} 
+            name="password" 
+            type="password" 
+            // value="пароль12" 
+          />
           <Button className="modal__button" onClick={onSubmit}>
             {
               isFetching ? <Lodader/> : 'Войти'
