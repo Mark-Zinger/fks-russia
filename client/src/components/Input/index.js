@@ -1,9 +1,12 @@
-import React, { useState, forwardRef, useEffect } from 'react';
+import React, { useState, forwardRef, useEffect,createRef } from 'react';
+import cn from 'classnames'
 
 
 export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) => {
     
   const [isFull, setIsFull] = useState(false)
+  
+  const insideRef = ref?ref:createRef();
 
   const onChangeHandler = (e) => {
     if(e.target.value && !isFull) {
@@ -14,15 +17,15 @@ export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) 
     if(onChange) onChange(e);
   }
   useEffect(() =>{
-    if(ref.current.value.trim()) setIsFull(true);
+    if(insideRef.current.value.trim()) setIsFull(true);
   },[])
 
   return (
       <div className={`input__container ${isFull?'input_active':''}`}>
           <input 
-            ref={ref}
+            ref={insideRef}
             type="text" 
-            className={`input ${className}`}
+            className={cn('input',{className})}
             onChange={onChangeHandler} 
             {...ownProps}
           />

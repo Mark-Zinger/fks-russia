@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderAuth from '../HeaderAuth';
+import AuthBar from '../AuthBar';
 import { Link } from 'react-router-dom'
 
 
@@ -13,7 +13,7 @@ export default (props) => {
                 <div className="header__menu">
                     <HeaderMenuLink/>
                 </div>
-                <HeaderAuth/>
+                <AuthBar/>
             </div>
             
         </div>

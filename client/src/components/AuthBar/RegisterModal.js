@@ -12,7 +12,7 @@ const mapStatetoProps = ({ user }) => ({
   isSuccess: user.isSuccess
 })
 
-const LoginModal = ({showModal,closeModal,isFetching, errorMessage, isError, isSuccess}) => {
+const RegisterModal = ({showModal,closeModal,isFetching, errorMessage, isError, isSuccess}) => {
 
     const dispatch = useDispatch();
 
@@ -69,4 +69,4 @@ const LoginModal = ({showModal,closeModal,isFetching, errorMessage, isError, isS
     )
 }
 
-export default connect(mapStatetoProps)(LoginModal);
+export default connect(mapStatetoProps)(RegisterModal);
