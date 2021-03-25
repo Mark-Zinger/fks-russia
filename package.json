@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
+    "quickstart": "npm i && npm run client:install && npm run db:reset && npm run dev",
     "server": "nodemon server.js",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "client": "npm run start --prefix client",

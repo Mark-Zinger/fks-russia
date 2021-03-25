@@ -10,14 +10,14 @@ const AuthModal = (props) => {
   const {
     showModal=false,
     closeModal,
-    children 
   } = props;
   const [errorMessage, setErrorMessage] = useState(false);
   const [modalType,setModalType] = useState('auth');
   const [subbmit, setSubmit] = useState({
-    title: 'Войти',
-    onSubmit: () => {}
-  })
+    onSubmit:() => console.log('submit handler not set'),
+    isFetching: false,
+    children: 'Войти'
+  });
 
   useEffect(()=>setModalType(showModal),[showModal])
 
@@ -32,7 +32,8 @@ const AuthModal = (props) => {
           showModal,
           closeModal,
           setErrorMessage,
-          setModalType
+          setModalType,
+          setSubmit
         }}
       >
       <div className="modal__title">
@@ -40,7 +41,7 @@ const AuthModal = (props) => {
         <Error messege={errorMessage}/>
       </div>
       <AuthModalBody context={modalType}/>
-      <SubmitButton {...{}}>
+      <SubmitButton {...subbmit}>
         {SubmitTitle(modalType)}
       </SubmitButton>
       </AuthModalContext.Provider>

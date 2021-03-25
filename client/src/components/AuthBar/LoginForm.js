@@ -5,14 +5,36 @@ import { loginUser, userSelector, clearState } from '../../features/userSlice';
 import { AuthModalContext } from './AuthModal'
 
 export default (params) => {
-  const {showModal, closeModal, setErrorMessage,setModalType} = useContext(AuthModalContext);
+  const {showModal, closeModal, setErrorMessage, setModalType,setSubmit} = useContext(AuthModalContext);
   const {isFetching, errorMessage, isError, isSuccess} = useSelector(userSelector);
   const [data, setData] = useState({})
 
+  const dispatch = useDispatch();
+
   const onChangeHandler = (e) => {
     const newData = {...data};
-    console.log(e.target);
+    newData[e.target.name] = e.target.value;
+    setData(newData)
   }
+
+  useEffect(()=>{
+    setSubmit({
+      onSubmit:()=>{ dispatch(loginUser(data)); },
+      isFetching,
+      children: 'Войти'
+    })
+  },[data,isFetching])
+
+  useEffect(()=>{
+    if(isError){
+      setErrorMessage(errorMessage)
+    } else {
+      setErrorMessage(false)
+    }
+  },[isError,errorMessage])
+
+  useEffect(()=> { if(isSuccess) closeModal()},[isSuccess])
+
   const loginInputRef = createRef();
   const passwordInputRef = createRef();
 
