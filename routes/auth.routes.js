@@ -67,13 +67,20 @@ router.post(
     const {email, password} = req.body
     console.log(email, password);
 
-    const [user] = await UserAuth.findAll({ 
+    let [user] = await UserAuth.findAll({ 
       where: {email},
       include: [{
         model: UserData
       }]
     })
-    console.log(user);
+    
+    if(!user) [user] = await UserAuth.findAll({ 
+      where: {username: email},
+      include: [{
+        model: UserData
+      }]
+    })
+
     if (!user) {
       return res.status(400).json({ message: 'Пользователь не найден' })
     }
@@ -83,8 +90,6 @@ router.post(
     if (!isMatch) {
       return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
     }
-
-    console.log('USER:',user);
 
     const token = jwt.sign(
       { userId: user.id },
@@ -96,7 +101,7 @@ router.post(
       token, 
       userId: user.id,
       email: user.email, 
-      username: user.UserDatum.userName,
+      username: user.username,
       avatar: user.UserDatum.avatar
     })
 

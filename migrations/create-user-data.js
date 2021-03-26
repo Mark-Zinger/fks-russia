@@ -9,12 +9,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: { type: Sequelize.STRING },
-      userName: { type: Sequelize.STRING},
-      createAt: { 
-        type: Sequelize.DATE,
-      },
-      avatar: { type: Sequelize.STRING },
+      createAt: Sequelize.DATE,
+      fullName: Sequelize.STRING(128),
+      avatar: Sequelize.STRING,
       role: Sequelize.STRING(8),
     });
   },

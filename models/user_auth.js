@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         unique: true
     },
-    userId: DataTypes.STRING,
+    username: DataTypes.STRING(32),
     password: DataTypes.STRING,
   }, {
     sequelize,

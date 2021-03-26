@@ -34,10 +34,7 @@ export default (params) => {
   },[isError,errorMessage])
 
   useEffect(()=> { if(isSuccess) closeModal()},[isSuccess])
-
-  const loginInputRef = createRef();
-  const passwordInputRef = createRef();
-
+  
   return (
     <form>
       <Input 

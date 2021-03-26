@@ -1,5 +1,6 @@
 .input {
-    margin-bottom: 20px;
+    $root: &;
+    // margin-bottom: 20px;
     height: 35px;
     width: 100%;
     padding: 10px 14px;
@@ -10,9 +11,12 @@
         outline: none;
     }
     &__container {
+        margin-bottom: 20px;
         position: relative;
         margin-top: 0;
         transition: margin .3s ease;
+
+        
     }
     &__placeholder {
         position: absolute;
@@ -29,8 +33,10 @@
         color: white;
         transform: translate(-10px, -37px);
     }
-
     &_active, &__container:hover {
-        margin-top: 20px;
+        margin-top: 40px;
+        &:first-child {
+            margin-top: 20px;
+        }
     }
 }

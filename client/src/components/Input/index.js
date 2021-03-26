@@ -2,7 +2,7 @@ import React, { useState, forwardRef, useEffect,createRef } from 'react';
 import cn from 'classnames'
 
 
-export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) => {
+export default forwardRef(({className,placeholder, onChange,children, ...ownProps}, ref) => {
     
   const [isFull, setIsFull] = useState(false)
   
@@ -25,10 +25,11 @@ export default forwardRef(({className,placeholder, onChange, ...ownProps}, ref) 
           <input 
             ref={insideRef}
             type="text" 
-            className={cn('input',{className})}
+            className={cn('input', className)}
             onChange={onChangeHandler} 
             {...ownProps}
           />
+          {children}
           <div className="input__placeholder">{placeholder}</div>
       </div>
   )
