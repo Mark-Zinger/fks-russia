@@ -2,7 +2,9 @@ import React, {createContext, useEffect, useState} from 'react';
 import Modal from '../Modal';
 import SubmitButton from '../SubmitButton';
 import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm'
+import RegisterForm from './RegisterForm';
+import { AnimatePresence, motion, AnimateSharedLayout } from "framer-motion";  
+
 
 export const AuthModalContext = createContext();
 
@@ -33,45 +35,29 @@ const AuthModal = (props) => {
           closeModal,
           setErrorMessage,
           setModalType,
-          setSubmit
+          setSubmit,
+          modalType,
+          subbmit,
+          errorMessage
         }}
       >
-      <div className="modal__title">
-        {ModalTitle(modalType)}
-        <Error messege={errorMessage}/>
-      </div>
-      <AuthModalBody context={modalType}/>
-      <SubmitButton {...subbmit}>
-        {SubmitTitle(modalType)}
-      </SubmitButton>
+      <AnimatePresence>
+        <AuthModalBody context={modalType}/>
+      </AnimatePresence>
       </AuthModalContext.Provider>
     </Modal>
   )
 }
 
-const ModalTitle = (context) => {
-  switch(context){
-    case 'auth': return 'Авторизация';
-    case 'register': return 'Регистрация';
-    default: return 'Авторизация';
-  }
-}
-const SubmitTitle = (context) => {
-  switch(context) {
-    case 'auth': return 'Войти';
-    case 'register': return 'Зарегистрироваться';
-    default: return 'Авторизация';
-  }
-}
+
 
 const AuthModalBody = ({context}) => {
   switch(context){
     case 'auth': return <LoginForm/>;
     case 'register': return <RegisterForm/>;
-    default: return 'Авторизация';
+    default: return <LoginForm/>;
   }
-}
 
-const Error = ({messege, isError=false}) => isError && <div className="modal__error">{messege}</div>;
+}
 
 export default AuthModal;

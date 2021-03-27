@@ -54,5 +54,14 @@
         margin-bottom: 20px;
         color: red;
     }
+    &__link {
+        text-align: center;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }   
 }
 

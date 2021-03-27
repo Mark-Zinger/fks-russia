@@ -19,12 +19,21 @@
     &__logo {
         color: white;
         font-weight: 700;
-        width: 3*$col-abs;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 5*$col-abs;
+        text-decoration: none;
+        transition: background .3s ease;
+            &:hover {
+                background: $primary-blue-2;
+            }
     }
     
     &__menu {
         height: 100%;
-        width: 16*$col-abs;
+        width: 13*$col-abs;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -37,8 +46,10 @@
             font-weight: 700;
             padding: 0 20px;
             text-decoration: none;
+            transition: background .3s ease;
+            
             &:hover {
-                background: #000;
+                background: $dark-grey-2;
             }
         }
     }

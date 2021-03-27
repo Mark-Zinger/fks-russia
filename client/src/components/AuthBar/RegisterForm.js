@@ -4,9 +4,10 @@ import PasswordValidationInput from '../PasswordValidationInput'
 import { useSelector, useDispatch } from 'react-redux';
 import { signupUser, userSelector, clearState } from '../../features/userSlice';
 import { AuthModalContext } from './AuthModal'
+import AuthModalLayout from './AuthModalLayout'
 
 export default (params) => {
-  const {showModal, closeModal, setErrorMessage, setModalType,setSubmit} = useContext(AuthModalContext);
+  const {closeModal, setErrorMessage,setSubmit} = useContext(AuthModalContext);
   const {isFetching, errorMessage, isError, isSuccess} = useSelector(userSelector);
   const [data, setData] = useState({})
 
@@ -37,6 +38,7 @@ export default (params) => {
   useEffect(()=> { if(isSuccess) closeModal()},[isSuccess])
 
   return (
+    <AuthModalLayout>
     <form>
       <Input 
         onChange={onChangeHandler} 
@@ -58,10 +60,9 @@ export default (params) => {
         placeholder={"Придумайте пароль"} 
         name="password"
         type="password" 
-      />
-      
-      
+      />    
     </form>
+    </AuthModalLayout>
   )
 }
 

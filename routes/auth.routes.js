@@ -46,7 +46,7 @@ router.post(
       createAt: new Date()
     });
   
-    res.status(201).json({ ...user })
+    res.status(200).json({ ...user })
 
   } catch (e) {
     console.log(e);

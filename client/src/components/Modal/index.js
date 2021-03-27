@@ -15,6 +15,14 @@ const Modal = ({ showModal, children, closeModal, className, ...ownProps }) => {
         if(e.target.classList.contains('ModalContainer')) closeModal();
     }
 
+    const escapeHandeler = (e) => {
+      e.keyCode === 27 && closeModal()
+    }
+    useEffect(() =>{
+      window.addEventListener('keydown', escapeHandeler);
+      return () => window.removeEventListener('keydown', escapeHandeler);
+    },[]);
+
     return createPortal(
         (<AnimatePresence> 
             {showModal && (

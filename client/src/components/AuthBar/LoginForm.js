@@ -2,7 +2,8 @@ import React, {useEffect, useContext, useState, createRef} from 'react';
 import Input from '../Input';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, userSelector, clearState } from '../../features/userSlice';
-import { AuthModalContext } from './AuthModal'
+import { AuthModalContext } from './AuthModal';
+import AuthModalLayout from './AuthModalLayout'
 
 export default (params) => {
   const {showModal, closeModal, setErrorMessage, setModalType,setSubmit} = useContext(AuthModalContext);
@@ -36,6 +37,7 @@ export default (params) => {
   useEffect(()=> { if(isSuccess) closeModal()},[isSuccess])
   
   return (
+    <AuthModalLayout>
     <form>
       <Input 
         onChange={onChangeHandler} 
@@ -51,6 +53,7 @@ export default (params) => {
         // value="пароль12" 
       />
     </form>
+    </AuthModalLayout>
   )
 }
 
