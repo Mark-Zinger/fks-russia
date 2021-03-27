@@ -1,14 +1,10 @@
 'use strict';
 const { Model } = require('sequelize');
-const UserData = require('./user_data')
 
 
 module.exports = (sequelize, DataTypes) => {
   class UserAuth extends Model { 
     static associate(models) {
-      UserAuth.hasOne(models.UserData, {
-        foreignKey: 'id',
-      })
   } };
   UserAuth.init({
    
@@ -19,18 +15,21 @@ module.exports = (sequelize, DataTypes) => {
         },
         unique: true
     },
-    username: DataTypes.STRING(32),
+    username: {
+      type:DataTypes.STRING(32),
+      unique: true
+    },
     password: DataTypes.STRING,
+    createAt: DataTypes.DATE,
+    fullname: DataTypes.STRING(128),
+    avatar: DataTypes.STRING,
+    role: DataTypes.STRING(8),
   }, {
     sequelize,
     tableName: 'user_auth',
     modelName: 'UserAuth',
     timestamps: false
   });
-
-  // UserAuth.hasOne(UserData, {
-  //   foreignKey: 'userId',
-  // })
   
   return UserAuth;
 };

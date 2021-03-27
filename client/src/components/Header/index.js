@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthBar from '../AuthBar';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import HeaderLogo from '../HeaderLogo'
 
 
 
@@ -9,7 +10,7 @@ export default (props) => {
     return (
         <div className="header">
             <div className="header__wrapper">
-                <Link to="/" className="header__logo">Логотип</Link>
+                <Link to="/" className="header__logo"><HeaderLogo/></Link>
                 <div className="header__menu">
                     <HeaderMenuLink/>
                 </div>

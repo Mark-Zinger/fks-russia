@@ -19,10 +19,11 @@ const RegisterModal = ({showModal,closeModal,isFetching, errorMessage, isError, 
     const loginInputRef = createRef();
     const passwordInputRef = createRef();
 
-    const onSubmit = () => dispatch(loginUser({
-        email: loginInputRef.current.value,
-        password: passwordInputRef.current.value,
-    }));
+    const onSubmit = () => console.log;
+    // dispatch(loginUser({
+    //     email: loginInputRef.current.value,
+    //     password: passwordInputRef.current.value,
+    // }));
 
     useEffect(()=> {
       if(isSuccess) closeModal()

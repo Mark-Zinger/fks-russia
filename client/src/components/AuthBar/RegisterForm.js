@@ -2,7 +2,7 @@ import React, {useEffect, useContext, useState, createRef} from 'react';
 import Input from '../Input';
 import PasswordValidationInput from '../PasswordValidationInput'
 import { useSelector, useDispatch } from 'react-redux';
-import { loginUser, userSelector, clearState } from '../../features/userSlice';
+import { signupUser, userSelector, clearState } from '../../features/userSlice';
 import { AuthModalContext } from './AuthModal'
 
 export default (params) => {
@@ -20,7 +20,7 @@ export default (params) => {
 
   useEffect(()=>{
     setSubmit({
-      onSubmit:()=>{ console.table(data); },
+      onSubmit:()=>{ dispatch(signupUser(data)) },
       isFetching,
       children: 'Зарегистрироваться'
     })
