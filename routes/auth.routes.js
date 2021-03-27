@@ -3,41 +3,49 @@ const bcrypt = require('bcryptjs')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
-const { UserAuth, UserData } = require('../models');
+const { UserAuth } = require('../models');
 const router = Router()
 
 // /auth/register
 router.post(
   '/register',
   [
-    check('email', 'Некорректный email').isEmail(),
+    check('email', 'Некорректный email').normalizeEmail().isEmail(),
     check('password', 'Минимальная длина пароля 6 символов')
       .isLength({ min: 6 })
   ],
   async (req, res) => {
   try {
     const errors = validationResult(req)
+    
 
     if (!errors.isEmpty()) {
-      return res.status(400).json({
-        errors: errors.array(),
-        message: 'Некорректный данные при регистрации'
-      })
+      return res.status(400).json(errors.array())
     }
 
-    const {email, password} = req.body
-   
+    // res.status(201).json({ ...req.body })
+
+    const {email, password,username} = req.body
 
     
-    const [candidate] = await UserAuth.findAll({ where: {email} })
+    let [candidate] = await UserAuth.findAll({ where: {email} });
     
     if (candidate) {
-      return res.status(400).json({ message: 'Такой пользователь уже существует' })
+      return res.status(400).json({ message: 'Адрес Электронной почты уже используется другим пользователем' })
+    }
+    if(!candidate) [candidate] = await UserAuth.findAll({ where: {username} });
+    if(candidate) {
+      return res.status(400).json({ message: 'Пользователь с таким логином уже существует' })
     }
 
     const hashedPassword = await bcrypt.hash(password, 12)
-    const user = await UserAuth.create({ email, password: hashedPassword, userId: email+password  });
-
+    const user = await UserAuth.create({ 
+      ...req.body, 
+      password: hashedPassword,
+      role: 'user',
+      createAt: new Date()
+    });
+  
     res.status(201).json({ ...user })
 
   } catch (e) {
@@ -67,19 +75,9 @@ router.post(
     const {email, password} = req.body
     console.log(email, password);
 
-    let [user] = await UserAuth.findAll({ 
-      where: {email},
-      include: [{
-        model: UserData
-      }]
-    })
+    let [user] = await UserAuth.findAll({ where: {email} })
     
-    if(!user) [user] = await UserAuth.findAll({ 
-      where: {username: email},
-      include: [{
-        model: UserData
-      }]
-    })
+    if(!user) [user] = await UserAuth.findAll({ where: {username: email}})
 
     if (!user) {
       return res.status(400).json({ message: 'Пользователь не найден' })
@@ -102,7 +100,7 @@ router.post(
       userId: user.id,
       email: user.email, 
       username: user.username,
-      avatar: user.UserDatum.avatar
+      avatar: user.avatar
     })
 
   } catch ({message}) {

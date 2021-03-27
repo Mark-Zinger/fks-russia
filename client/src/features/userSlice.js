@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import encodeURIHelper from '../common/helpers/encodeURIHelper'
 
 export const signupUser = createAsyncThunk(
   'users/signupUser',
-  async ({ email, password }, thunkAPI) => {
+  async (payload, thunkAPI) => {
+
     try {
       const response = await fetch(
         '/auth/register',
@@ -10,12 +12,9 @@ export const signupUser = createAsyncThunk(
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
           },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
+          body: encodeURIHelper(payload)
         }
       );
       let data = await response.json();
@@ -23,7 +22,7 @@ export const signupUser = createAsyncThunk(
 
       if (response.status === 200) {
         localStorage.setItem('token', data.token);
-        return { ...data, email: email };
+        return { ...data };
       } else {
         return thunkAPI.rejectWithValue(data);
       }
