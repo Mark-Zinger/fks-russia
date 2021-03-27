@@ -29,11 +29,11 @@
         
     }
 
-    &__container:hover &__placeholder, .input:focus &__placeholder, .input_active &__placeholder {  
+    .input:focus &__placeholder, .input_active &__placeholder {  
         color: white;
         transform: translate(-10px, -37px);
     }
-    &_active, &__container:hover {
+    &_active {
         margin-top: 40px;
         &:first-child {
             margin-top: 20px;
