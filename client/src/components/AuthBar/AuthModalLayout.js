@@ -14,10 +14,10 @@ export default ({children, ...own}) => {
 
   return (
     <motion.div
-      initial={{opacity:0, scale: 0.99}}
+      initial={{opacity:0, scale: 0.99, animationDelay: 0.5}}
       animate={{opacity:1, scale: 1}}
       exit={{opacity:0, scale: 0.99}}
-      transition={{duration: 0.3, ease: 'easeIn'}}
+      // transition={{duration: 0.3, ease: 'easeIn'}}
     {...own}
     >
         <div className="modal__title">
