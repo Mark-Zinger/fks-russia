@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useCallback} from 'react';
 import Button from '../Button';
 import Loader from '../Loader'
 import cn from 'classnames';
@@ -12,6 +12,15 @@ export default (props) => {
         children=null,
         ...ownProps
     } = props;
+
+    const enterHandler = useCallback(({keyCode}) => {
+        if(keyCode == 13) onSubmit();
+    },[onSubmit])
+
+    useEffect(() => {
+        window.addEventListener('keydown',enterHandler);
+        return () => window.removeEventListener('keydown',enterHandler);
+    }, [enterHandler])
 
     return (
         <Button 

@@ -1,5 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import encodeURIHelper from '../common/helpers/encodeURIHelper'
+import encodeURIHelper from '../common/helpers/encodeURIHelper';
+
+const initialState = {
+  username: '',
+  fullname: '',
+  email: '',
+  avatar: '',
+  token: null,
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
+};
 
 export const signupUser = createAsyncThunk(
   'users/signupUser',
@@ -20,7 +32,7 @@ export const signupUser = createAsyncThunk(
       let data = await response.json();
       console.log('data', data);
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         localStorage.setItem('token', data.token);
         return { ...data };
       } else {
@@ -70,17 +82,19 @@ export const loginUser = createAsyncThunk(
 
 export const fetchUserBytoken = createAsyncThunk(
   'users/fetchUserByToken',
-  async ({ token }, thunkAPI) => {
+  async (payload, thunkAPI) => {
+    console.log(payload);
     try {
       const response = await fetch(
-        'https://mock-user-auth-server.herokuapp.com/api/v1/users',
+        '/auth/token',
         {
-          method: 'GET',
+          method: 'POST',
           headers: {
             Accept: 'application/json',
-            Authorization: token,
-            'Content-Type': 'application/json',
+            // Authorization: payload.token,
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
           },
+          body: encodeURIHelper(payload)
         }
       );
       let data = await response.json();
@@ -98,18 +112,11 @@ export const fetchUserBytoken = createAsyncThunk(
   }
 );
 
+
+
 export const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    username: '',
-    email: '',
-    avatar: '',
-    token: null,
-    isFetching: false,
-    isSuccess: false,
-    isError: false,
-    errorMessage: '',
-  },
+  initialState,
   reducers: {
     clearState: (state) => {
       state.isError = false;
@@ -118,14 +125,23 @@ export const userSlice = createSlice({
 
       return state;
     },
+    logout: (state) => {
+      state = {...initialState};
+      localStorage.clear();
+
+      return state;
+    }
   },
   extraReducers: {
     [signupUser.fulfilled]: (state, { payload }) => {
-      console.log('payload', payload);
+      console.log('fulfilled', payload);
       state.isFetching = false;
       state.isSuccess = true;
-      state.email = payload.user.email;
-      state.username = payload.user.name;
+      state.email = payload.email;
+      console.log('username',payload.username);
+      state.username = payload.username;  
+      state.fullname = payload.fullname;
+      state.avatar = payload.avatar || 'default'
     },
     [signupUser.pending]: (state) => {
       console.log('pending')
@@ -135,7 +151,7 @@ export const userSlice = createSlice({
       console.log('rejected', payload)
       state.isFetching = false;
       state.isError = true;
-      state.errorMessage = payload.message;
+      state.errorMessage = payload.message || payload[0].msg;
     },
     [loginUser.fulfilled]: (state, { payload }) => {
       console.log('fulfilled', payload);
@@ -163,21 +179,25 @@ export const userSlice = createSlice({
       state.isFetching = true;
     },
     [fetchUserBytoken.fulfilled]: (state, { payload }) => {
+      console.log('fulfilled',payload);
+
       state.isFetching = false;
       state.isSuccess = true;
-
       state.email = payload.email;
-      state.username = payload.name;
+      state.username = payload.username;
+      state.fullname = payload.fullname;
+      state.avatar = payload.avatar;
     },
-    [fetchUserBytoken.rejected]: (state) => {
-      console.log('fetchUserBytoken');
+    [fetchUserBytoken.rejected]: (state, {payload}) => {
+      console.log('fetchUserBytoken', payload);
+      state.token = null;
       state.isFetching = false;
       state.isError = true;
     },
   },
 });
 
-export const { clearState } = userSlice.actions;
+export const { clearState, logout } = userSlice.actions;
 
 export const userSelector = (state) => state.user;
 

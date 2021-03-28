@@ -53,5 +53,13 @@
             }
         }
     }
+    &__user {
+        position: relative;
+        cursor: pointer;
+        transition: background .3s ease;
+        &:hover {
+            background: $dark-grey;
+        }
+    }
 
 }

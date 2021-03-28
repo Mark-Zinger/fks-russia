@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from '../Header'
-import MainSlider from '../MainSlider'
 import ScrollContainer from '../ScrollContainer'
-import RecommendationList from '../RecommendationList';
+import { fetchUserBytoken } from '../../features/userSlice';
+import { useDispatch } from 'react-redux';
 import '../../Layout.scss';
 
 
 
 function Layout({children}) {
+
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const token = localStorage["token"];
+    dispatch(fetchUserBytoken({token}));
+  },[])
+
   return (
     <>
     <Header/>

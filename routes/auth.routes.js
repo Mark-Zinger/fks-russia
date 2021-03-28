@@ -45,9 +45,14 @@ router.post(
       role: 'user',
       createAt: new Date()
     });
-  
-    res.status(200).json({ ...user })
 
+    user.dataValues.token = jwt.sign(
+      { userId: user.dataValues.id },
+      config.get('jwtSecret'),
+      { expiresIn: '1m' }
+    )
+  
+    res.status(201).json({ ...user.dataValues });
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова', error: e })
@@ -105,6 +110,48 @@ router.post(
 
   } catch ({message}) {
     res.status(500).json({ message })
+  }
+})
+
+router.post(
+  '/token',
+  [
+    check('token', 'Отсутствует токен').exists()
+  ],
+  async (req, res) => {
+  try {
+    // const errors = validationResult(req)
+
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({
+    //     errors: errors.array(),
+    //     message: 'Некорректный данные при входе в систему'
+    //   })
+    // }
+
+    const {token} = req.body
+    console.log(token);
+    let user = null;
+    
+
+
+    const verifyToken = jwt.verify( token, config.get('jwtSecret'))
+    
+    
+
+    if(verifyToken.userId) {
+      [user] = await UserAuth.findAll({ where: {id: verifyToken.userId} })
+    }
+    res.json(user)
+    console.log(userId, user);
+    if(user) {
+      res.json(user)
+    } else {
+      res.status(403).json({messege: 'invalid Token'})
+    }
+  } catch (e) {
+    res.status(500).json({e})
+    console.log(e);
   }
 })
 

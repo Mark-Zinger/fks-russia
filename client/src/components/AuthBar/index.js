@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { userSelector } from '../../features/userSlice'
-import LoginModal from './LoginModal';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../../features/userSlice';
+import HeaderUser from '../HeaderUser'
 import AuthModal from './AuthModal'
 
 const AuthBar = (params) => {
-  const {isSuccess, username, avatar} = useSelector(userSelector)
+  const {isSuccess} = useSelector(userSelector)
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,12 +17,7 @@ const AuthBar = (params) => {
             <div className="header__auth-link" onClick={()=>setIsOpen('register')}>Регистрация</div>
           </div>
         )
-        : (
-          <div className="header__user">
-            <div className="header__user-name">{username}</div>
-            <img src={avatar} className="header__user-avatar"/>
-          </div>
-        )
+        : ( <HeaderUser/> )
       }
       
     <AuthModal showModal={isOpen} closeModal={()=>setIsOpen(false)}/>
