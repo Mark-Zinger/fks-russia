@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const { Tournaments, Game } = require('../models');
+const { Tournaments, Game, MainPageSlider} = require('../models');
 
 
 const router = Router();
@@ -11,8 +11,31 @@ router.get('/', async(req, res) => {
     const tournaments = await Tournaments.findAll(
       { limit, include: [{ model: Game, as: 'game'}]
     })
-    
+
     res.json(tournaments);
+  } catch (e) {
+    res.status(500).json(e);
+  }  
+})
+
+router.get('/main-slider', async(req, res) => {
+  
+  try {
+    const mainPageSlides = await MainPageSlider.findAll(
+      { 
+        include: [{ 
+        model: Tournaments, 
+        as: 'tour',
+        // fields: ['name','dateBegin','backgroundURL','fond','game'],
+        include: [{
+          model: Game,
+          as: 'game',
+          // fields: ['title'],
+        }]
+      }]
+    })
+    
+    res.json(mainPageSlides);
   } catch (e) {
     res.status(500).json(e);
   }  
@@ -33,6 +56,7 @@ router.get('/:id', async(req, res) => {
     res.status(500).json(e)
   }
 })
+
 
 
 module.exports = router
