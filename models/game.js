@@ -5,13 +5,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Game extends Model { 
     static associate(models) {
-      // Task.belongsTo(models.User, {
-      //   foreignKey: {
-      //     name: 'userId',
-      //     allowNull: false
-      //   },
-      //   as: 'game'
-      // });
+      Game.hasMany(models.Tournaments, { foreignKey: 'id' });
     } 
 };
   Game.init({

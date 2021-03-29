@@ -1,0 +1,4 @@
+fatal: the remote end hung up unexpectedly
+
+git config http.postBuffer 262144000
+git config --global http.postBuffer 262144000
