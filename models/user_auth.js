@@ -25,7 +25,10 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     password: DataTypes.STRING,
-    createAt: DataTypes.DATE,
+    createAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    },
     fullname: DataTypes.STRING(128),
     avatar: DataTypes.STRING,
     role: DataTypes.STRING(8),

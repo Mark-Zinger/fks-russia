@@ -3,6 +3,7 @@ import Header from '../Header'
 import ScrollContainer from '../ScrollContainer'
 import { fetchUserBytoken } from '../../features/userSlice';
 import { useDispatch } from 'react-redux';
+import Icons from '../../icons'
 import '../../Layout.scss';
 
 
@@ -18,8 +19,8 @@ function Layout({children}) {
 
   return (
     <>
+    <Icons/>
     <Header/>
-
     <ScrollContainer>
       <div className="Layout">
         {children}

@@ -3,7 +3,7 @@ const config = require('config')
 const path = require('path')
 const bodyParser = require('body-parser');
 const db = require('./models')
-// const mongoose = require('mongoose')
+
 
 const app = express()
 
@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/auth', require('./routes/auth.routes'))
+app.use('/tournaments', require('./routes/tournaments.routes'))
+
 // app.use('/api/link', require('./routes/link.routes'))
 // app.use('/t', require('./routes/redirect.routes'))
 

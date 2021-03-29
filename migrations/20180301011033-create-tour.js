@@ -20,7 +20,7 @@ module.exports = {
       },
       name: Sequelize.STRING(64),
       dateBegin: Sequelize.DATE,
-      background: Sequelize.STRING,
+      backgroundURL: Sequelize.STRING,
       fond: Sequelize.INTEGER,
     });
   },

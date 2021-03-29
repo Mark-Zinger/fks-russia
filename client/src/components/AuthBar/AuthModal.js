@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useEffect, useLayoutEffect, useState} from 'react';
 import Modal from '../Modal';
 import SubmitButton from '../SubmitButton';
 import LoginForm from './LoginForm';
@@ -20,6 +20,8 @@ const AuthModal = (props) => {
     isFetching: false,
     children: 'Войти'
   });
+  
+  useEffect(()=>setErrorMessage(false),[modalType])
 
   useEffect(()=>setModalType(showModal),[showModal])
 
