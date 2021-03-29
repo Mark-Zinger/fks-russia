@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       Tournaments.belongsTo(models.Game, {
         foreignKey: 'id_game',
         as: 'game'
-        
       });
+      Tournaments.hasMany(models.MainPageSlider, { foreignKey: 'id' });
     } 
 };
   Tournaments.init({
