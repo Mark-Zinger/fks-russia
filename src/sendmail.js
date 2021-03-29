@@ -1,33 +1,30 @@
+const fs = require('fs');
+const path = require('path');
+const mailTemplate = require('./mail-template')
+
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
+const sendmail = ({email, fullname}) => {
 
-
-
-// var transporter = nodemailer.createTransport(smtpTransport({
-//   service: 'gmail',
-//   host: 'smtp.gmail.com',
-//   auth: {
-//     user: 'kibersportfederation@gmail.com',
-//     pass: 'fcs-russia-pass'
-//   }
-// }));
-
-// var mailOptions = {
-//   from: 'kibersportfederation@gmail.com',
-//   to: 'lllessive@gmail.com',
-//   subject: 'Подтверждение аккаунта',
-//   text: 'That was easy!'
-// };
-
-// transporter.sendMail(mailOptions)
-
-// export default ({email, fullName}) => {
+  var transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+      user: 'kibersportfederation@gmail.com',
+      pass: ''
+    }
+  }));
   
-//   return transporter.sendMail({
-//     from: 'kibersportfederation@gmail.com',
-//     to: email,
-//     subject: 'Подтверждение аккаунта',
-//     text: 'That was easy!'
-//   })
-// }
+  return transporter.sendMail({
+    from: 'kibersportfederation@gmail.com',
+    to: email,
+    subject: 'Подтверждение аккаунта',
+    html: mailTemplate({fullname})
+  })
+}
+
+module.exports = sendmail;
+
+
+

@@ -2,28 +2,22 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('tour', {
+    await queryInterface.createTable('game', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
+      title: {
+        type: Sequelize.STRING(64),
+      },
+      icon: {
         type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.STRING
-      },
-      dateBegin: {
-        type: Sequelize.DATE
-      },
-      dateBegin: {
-        type: Sequelize.STRING
-      },
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('tour');
+    await queryInterface.dropTable('game');
   }
 };

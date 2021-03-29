@@ -5,6 +5,11 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class UserAuth extends Model { 
     static associate(models) {
+      // UserAuth.belongsToMany(models.Ingredient, {
+      //   through: "RecipeIngredient",
+      //   foreignKey: 'recipeId',
+      //   as: 'ingredients'
+      // });
   } };
   UserAuth.init({
    

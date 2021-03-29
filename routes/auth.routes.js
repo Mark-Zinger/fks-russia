@@ -4,7 +4,8 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const { UserAuth } = require('../models');
-const router = Router()
+const mailSender = require('../src/sendmail');
+const router = Router();
 
 // /auth/register
 router.post(
@@ -18,14 +19,13 @@ router.post(
   try {
     const errors = validationResult(req)
     
-
     if (!errors.isEmpty()) {
       return res.status(400).json(errors.array())
     }
 
     // res.status(201).json({ ...req.body })
 
-    const {email, password,username} = req.body
+    const {email, password,username,fullname} = req.body
 
     
     let [candidate] = await UserAuth.findAll({ where: {email} });
@@ -51,6 +51,8 @@ router.post(
       config.get('jwtSecret'),
       { expiresIn: '1m' }
     )
+
+    // await mailSender({email,fullname});
   
     res.status(201).json({ ...user.dataValues });
   } catch (e) {

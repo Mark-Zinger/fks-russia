@@ -1,8 +1,7 @@
 'use strict';
-
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('user_auth', {
+  up: function(queryInterface, Sequelize) {
+    return queryInterface.createTable('user_auth', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -18,7 +17,7 @@ module.exports = {
       role: Sequelize.STRING(8),
     });
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('user_auth');
+  down: function(queryInterface, Sequelize) {
+    return queryInterface.dropTable('user_auth');
   }
 };
