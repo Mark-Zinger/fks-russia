@@ -1,21 +1,63 @@
-import React from 'react'
+import React from 'react';
+import { motion } from 'framer-motion'
 
 
-export default (params) => {
-  
+
+export default (props) => {
+
+  const {
+    custom, 
+    animate,
+    backgroundURL,
+    dateBegin,
+    fond,
+    game,
+    name
+  } = props;
 
   return (
-    <li className="tournament-list__item">
+    <motion.li 
+      className="tournament-list__item"
+      custom={custom} animate={animate} 
+    >
       
       <div className="tournament-list__item-background-container">
-        <img src="/resources/images/background/csgo_2.jpg" className="tournament-list__item-background" alt=""/>
+        <img src={backgroundURL} className="tournament-list__item-background" alt=""/>
       </div>
       <div className="tournament-list__item-title">
         <div className="tournament-list__item-name">
-          Funspark ULTI 2021: Europe Season 1
+          {name}
         </div>
-        <div className="tournament-list__item-game">CS:GO</div>
+        <div className="tournament-list__item-game">{game.title}</div>
       </div>
-    </li>
+      <div className="tournament-list__item-format">
+        Формат: Single Elimination, 5x5
+      </div>
+      <div className="tournament-list__item-title">
+        <div className="tournament-list__item-date">
+            Дата начала: {dateBegin}
+        </div>
+        <div className="tournament-list__item-fond">{fond} ₽</div>
+      </div>
+    
+      
+
+      <div className="tournament-list__item-title">
+        <div className="tournament-list__item-sponsor">
+            Организатор: WarFace PVP Bravo
+        </div>
+        
+        <div className="tournament-list__item-members">
+            Участники: 18 / 128
+        </div>
+       
+        
+      </div>
+      
+      
+
+      
+
+    </motion.li>
   )
 }

@@ -11,9 +11,10 @@
         transform: translateX(-50%);
         font-size: 160px;
         font-weight: 700;
-        opacity: 0.2;
+        opacity: 0.17;
         text-transform: uppercase;
         user-select: none;
+        pointer-events: none;
         color: white;
     }
     &__body {
