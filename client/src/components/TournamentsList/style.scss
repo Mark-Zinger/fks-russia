@@ -1,0 +1,42 @@
+.tournament-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  list-style: none;
+
+  &__item {
+    min-height: 115px;
+    margin-bottom: 10px;
+    background: rgb(214, 214, 214);
+    border-radius: 5px;
+    color: black;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 15px 15px 28%;
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-name {
+      font-size: 20px;
+      font-weight: 700;
+      transform: translateY(-3px);
+    }
+
+    &-background {
+      // opacity: 0.9;
+      &-container {
+        width: 25%;
+        position: absolute;
+        // top: -20%;
+        left: 0;
+        top: 0;
+      }
+      width: 105%;
+      height: 105%;
+      object-fit: cover;
+    }
+  }
+}

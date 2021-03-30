@@ -20,12 +20,14 @@ export default forwardRef(({className,placeholder, onChange,children, ...ownProp
     if(insideRef.current.value.trim()) setIsFull(true);
   },[])
 
+  // `input__container ${isFull?'input_active':''}`
+
   return (
-      <div className={`input__container ${isFull?'input_active':''}`}>
+      <div className={cn('input__container', className, {input_active: isFull})}>
           <input 
             ref={insideRef}
             type="text" 
-            className={cn('input', className)}
+            className={cn('input')}
             onChange={onChangeHandler} 
             {...ownProps}
           />

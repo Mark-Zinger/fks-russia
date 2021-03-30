@@ -2,24 +2,37 @@
     position: relative;
     min-height: 100vh;
 
+
+    
     &__title {
-        position: absolute;
-        top: 50px; left: 50%;
+        position: fixed;
+        z-index: 2;
+        top: 42%; left: 50%;
         transform: translateX(-50%);
         font-size: 160px;
         font-weight: 700;
-        opacity: 0.3;
+        opacity: 0.2;
         text-transform: uppercase;
         user-select: none;
-
+        color: white;
     }
     &__body {
         position: relative;
+        padding-top: 95px;
+        max-width: 896px;
+        margin: 0 auto;
+
+        .main_page & {
+            padding-top: 0;
+            max-width: unset;
+        }
     }
     &__background {
+        z-index: -1;
         position: fixed;
         height: 100vh;
         width: 100vw;
+        left: 0; top: 0;
         object-fit: cover;
         opacity: .5;
     }

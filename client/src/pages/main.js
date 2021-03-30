@@ -7,7 +7,7 @@ import PageContainer from '../components/PageContainer'
 export default (params) => {
     
   return (
-    <PageContainer>
+    <PageContainer className="main_page">
       <MainSlider/>
       <RecommendationList/>
     </PageContainer>

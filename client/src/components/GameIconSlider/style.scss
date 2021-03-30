@@ -1,0 +1,13 @@
+.game-icon-slider {
+
+  display: flex;
+
+
+  .swiper-container {
+    border-radius: 4px;
+  }
+
+  &__slide {
+    width: auto !important;
+  }
+}

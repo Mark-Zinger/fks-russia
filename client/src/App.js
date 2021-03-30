@@ -5,6 +5,7 @@ import store from './app/store';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from './pages/main'
 import Tournaments from './pages/tournaments'
+import Tournament from './pages/tournament'
 import { AnimatePresence } from 'framer-motion'
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
             <AnimatePresence exitBeforeEnter initial={false}>
               <Switch location={location} key={location.pathname}>
               <Route exact path="/" component={Main}/>
-              <Route path="/tournaments" component={Tournaments}/>
+              <Route exact path="/tournaments" component={Tournaments}/>
+              <Route path="/tournaments/:id" component={Tournament}/>
               </Switch>
             </AnimatePresence>
             )}

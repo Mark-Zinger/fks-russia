@@ -21,17 +21,17 @@
     &__placeholder {
         position: absolute;
         left: 15px;
-        top: 6px;
+        top: 46%;
         color: black;
         transition: color .3s ease, transform .3s ease;
         pointer-events: none;
-
+        transform: translateY(-50%);
         
     }
 
     .input:focus &__placeholder, .input_active &__placeholder {  
         color: white;
-        transform: translate(-10px, -37px);
+        transform: translate(-10px, -45px);
     }
     &_active {
         margin-top: 40px;

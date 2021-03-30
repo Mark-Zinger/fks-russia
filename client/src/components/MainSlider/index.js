@@ -4,7 +4,6 @@ import SwiperCore, { Navigation, Pagination, Parallax, Autoplay } from 'swiper';
 import SlideContent from './slide';
 import {useHttp} from '../../hooks/http.hook'
 
-
 import './style.scss';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
