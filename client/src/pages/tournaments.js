@@ -6,7 +6,7 @@ export default (params) => {
   return (
     <PageContainer 
       title={"Турниры"}
-      background="/resources/images/background/csgo.jpg"
+      background="/resources/images/background/csgo_2.jpg"
     >
       
     </PageContainer>

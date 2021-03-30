@@ -1,14 +1,18 @@
 import React from 'react';
 import Button from '../Button'
 import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion';
+import Counter from '../Counter'
 
-export default ({img}) => {
+
+export default (props) => {
     
     const { scrollY } = useViewportScroll()
     const y = useTransform(scrollY, [0, 10], [0, 3], { clamp: false });
     const physics = { damping: 15, mass: 0.27, stiffness: 55 } // easing of smooth scroll
     const spring = useSpring(y, physics);
 
+    const {backgroundURL,dateBegin, fond, game, name} = props;
+    console.log(props);
 
     return (
         <>
@@ -17,7 +21,7 @@ export default ({img}) => {
                 data-swiper-parallax-opacity="0.1"
             >
                 <motion.img 
-                    src={img}  
+                    src={backgroundURL}  
                     alt="" 
                     className="main-slider__background"
                     style={{ y: spring}}
@@ -34,25 +38,25 @@ export default ({img}) => {
                 className="main-slider__counter"
                 data-swiper-parallax="-300"
                 data-swiper-parallax-duration="650"
-            >До начала турнира:
+            >Начало турнира:
                 <div 
                     className="main-slider__time"
                     data-swiper-parallax="-300"
                     data-swiper-parallax-duration="700"
                 >
-                    05 дней 10 часов 29 минут
+                    <Counter date={dateBegin}/>
                 </div>
             </div>
             <div 
                 className="main-slider__name"
                 data-swiper-parallax="-100"
                 data-swiper-parallax-duration="900"
-            >PRO.Challengers IV Spring 2021</div>
+            >{name}</div>
             <div 
                 className="main-slider__game"
                 data-swiper-parallax="-300"
                 data-swiper-parallax-duration="600"
-            >Warface</div>
+            >{game.title}</div>
             <div 
                 className="main-slider__award"
                 data-swiper-parallax="-100"
@@ -62,7 +66,7 @@ export default ({img}) => {
                 className="main-slider__award-fond"
                 data-swiper-parallax="-400"
                 data-swiper-parallax-duration="500"
-            >70 000 ₽</div>
+            >{fond} ₽</div>
             <Button 
                 className="main-slider__button"
                 data-swiper-parallax="-250"

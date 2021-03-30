@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../Button'
 import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion';
+import { useHttp } from '../../hooks/http.hook';
+import Counter from '../Counter'
 
 
 export default ({children}) => {
@@ -9,38 +11,56 @@ export default ({children}) => {
     const y = useTransform(scrollY, [0, 10], [0, -2], { clamp: false });
     const physics = { damping: 15, mass: 0.27, stiffness: 55 } // easing of smooth scroll
     const spring = useSpring(y, physics);
+    
+    const [slides, setSlides] = useState([])
+    const { request } = useHttp();
+
+    useEffect(async()=>{
+        const data = await request('/tournaments');
+        console.log(data);
+        setSlides(data);
+    },[])
 
     return (
         <motion.div className="recommendation-list" style={{y: spring}}>
             <div className="recommendation-list__title">Рекомендуемые турниры</div>
             <div className="recommendation-list__body">
-                {new Array(12)
-                .fill('')
-                .map((_, i) => <Card key={i} img={(i%6)+1}/>)
+                {slides
+                .map((el, i) => (
+                    <Card 
+                        key={i}
+                        tourId = {el.id}
+                        backgroundURL = {el.backgroundURL} 
+                        dateBegin = {el.dateBegin}
+                        name = {el.name}
+                        game = {el.game.title}
+                    />))
                 }
             </div>
         </motion.div>
     );
 }
 
-const Card = ({img})=> {
+const Card = (props)=> {
+    const {backgroundURL,dateBegin,game,name,tourId} = props;
+    console.log(props);
     return (
         <div className="card-element">
-            <img src={`/img/main-slider/${img}.jpg`} className="card-element__background"/>
+            <img src={backgroundURL} className="card-element__background"/>
             <div className="card-element__title">
-                Warface SuperFast
+                {name}
             </div>
             <div className="card-element__inline-info">
-                Warface 5x5
+                {game}
             </div>
             <div className="card-element__info-group">
                 <div className="card-element__timer">
                     До начала турнира:
                     <div className="card-element__time">
-                        05:00:45
+                        <Counter date={dateBegin}/>
                     </div>
                 </div>
-                <Button className="card-element__button">Перейти</Button>
+                <Button href={tourId} className="card-element__button">Перейти</Button>
             </div>
         </div>
     );

@@ -23,10 +23,13 @@ router.get('/main-slider', async(req, res) => {
   try {
     const mainPageSlides = await MainPageSlider.findAll(
       { 
+        order: [
+          ['id', 'ASC']
+        ],
         include: [{ 
         model: Tournaments, 
         as: 'tour',
-        // fields: ['name','dateBegin','backgroundURL','fond','game'],
+        
         include: [{
           model: Game,
           as: 'game',
