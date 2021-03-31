@@ -5,7 +5,7 @@ export default (props) => {
   const {id,className, ...own} = props
   return (
     <svg className={cn("svg-icon", className)} {...own}>
-        <use xlinkHref={`#${id}`} />
+        <use xlinkHref={id} />
     </svg>
   );
 };

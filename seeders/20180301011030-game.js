@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('game', [
-      { id: 1, title:'World of Tanks', icon: '#wot'},
+      { id: 1, title:'WoT', icon: '#wot'},
       { id: 2, title:'FIFA', icon: '#fi'},
       { id: 3, title:'PUBG', icon: '#pub'},
       { id: 4, title:'DOTA 2', icon: '#dt'},

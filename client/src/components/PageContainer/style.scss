@@ -1,7 +1,7 @@
 .page-container {
     position: relative;
     min-height: 100vh;
-
+    $root: &;
 
     
     &__title {
@@ -37,4 +37,10 @@
         object-fit: cover;
         opacity: .5;
     }
+    &_tournament {
+        #{$root}__body {
+            max-width: 1000px;
+        }
+    }
+
 }

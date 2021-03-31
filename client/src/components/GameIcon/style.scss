@@ -10,12 +10,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  transition: background .3s ease;
 
   &__svg {
     fill: $primary-violet;
     height: 45px;
     width: 45px;
     margin-bottom: 10px;
+  }
+  &_all-games {
+    font-size: 18px;
+    .svg-icon {
+      display: none;
+    }
+  }
+  &:active {
+    cursor: pointer;
+
+  }
+  &_selected {
+    background: rgba($primary-yellow, 0.87);
   }
 }

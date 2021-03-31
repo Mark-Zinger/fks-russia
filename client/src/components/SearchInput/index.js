@@ -4,12 +4,12 @@ import Input from '../Input';
 
 
 export default (props) => {
-    const {placeholder} = props
+    const {placeholder, onChange} = props
 
     return (
         <Input 
-            placeholder={placeholder}
             className="search-input"
+            {...{placeholder, onChange}}
         />
         
     )

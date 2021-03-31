@@ -8,15 +8,24 @@ const router = Router();
 
 router.get('/', async(req, res) => {
   const limit = req.query.limit? parseInt(req.query.limit) : 10;
-  const searсh = req.query.searсh? req.query.searсh : false;
+  const search = req.query.search? req.query.search : false;
+  const game = req.query.game? parseInt(req.query.game) : false;
   const page = req.query.page? req.query.page: 1;
-  console.log(searсh);
+  console.log(search, game, req.query.game);
+  
+  const where = {};
+  
+  if(search) where.name = {[Op.like]: `%${search}%`};
+  if(game) where.id_game = game;
 
   const dbQuery = {
     limit,
-    include: [{ model: Game, as: 'game'}]
+    include: [{ model: Game, as: 'game'}],
+    where
   }
-  if(searсh) dbQuery.where = {name: {[Op.like]: `%${searсh}%`}}
+ 
+  
+  // if(game) where
 
   try {
     const tournaments = await Tournaments.findAll(dbQuery)

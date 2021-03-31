@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/auth', require('./routes/auth.routes'))
 app.use('/tournaments', require('./routes/tournaments.routes'))
-// app.use('/main-page-slider', require('./routes/main-page-slider.routes'))
+app.use('/game', require('./routes/game.routes'))
 
 
 // app.use('/api/link', require('./routes/link.routes'))

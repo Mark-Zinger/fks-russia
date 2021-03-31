@@ -40,7 +40,7 @@ const HeaderMenuLink = () => {
     return (
         <div className="header__menu">
             {
-                links.map((el)=><HeaderLink {...el}/>)
+                links.map((el, i)=><HeaderLink {...el} key={i}/>)
             }
         </div>
     )

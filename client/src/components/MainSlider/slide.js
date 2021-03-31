@@ -66,7 +66,7 @@ export default (props) => {
                 className="main-slider__award-fond"
                 data-swiper-parallax="-400"
                 data-swiper-parallax-duration="500"
-            >{fond} ₽</div>
+            >{fond.toLocaleString('ru')} ₽</div>
             <Button 
                 className="main-slider__button"
                 data-swiper-parallax="-250"

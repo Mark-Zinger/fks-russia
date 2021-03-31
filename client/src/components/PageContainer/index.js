@@ -1,6 +1,7 @@
 import React from 'react';
-import { createPortal } from 'react-dom'
+import { createPortal } from 'react-dom';
 import { motion } from "framer-motion";
+import cn from 'classnames'
 
 const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.5 };
 
@@ -16,11 +17,11 @@ const thumbnailVariants = {
 
 export default (props) => {
     
-    const {children, title=false, background=false, ...own} = props;
+    const {children, title=false, background=false,className, ...own} = props;
 
     return (
         <motion.div 
-          className="page-container"
+          className={cn("page-container", className)}
           initial="initial"
           animate="enter"
           exit="exit"
