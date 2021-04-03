@@ -38,21 +38,21 @@ export default (props) => {
 const Background = ({background, title}) => {
   return createPortal((
     <>
-      <motion.div
+      {title && <motion.div
         initial={{ scale: 0.99, opacity: 0, x:'-50%' }}
         animate={{ scale: 1, opacity: 0.2, transition, x:'-50%'  }}
         exit="exit"
         variants={thumbnailVariants}
         className="page-container__title"
-      >{title}</motion.div>
-      <motion.img 
+      >{title}</motion.div>}
+      {background && <motion.img 
         src={background} 
         className="page-container__background"
         initial="initial"
         animate="enter"
         exit="exit"
         variants={thumbnailVariants}
-      />
+      />}
     </>
   ), document.getElementById('root'))
 }

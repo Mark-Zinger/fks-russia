@@ -27,7 +27,8 @@ export default () => {
     const {data} = await axios.get('/tournaments',{params})
     console.log(data);
     setList([]);
-    setTimeout(() =>setList(data))
+    requestAnimationFrame(() =>setList(data))
+    // setTimeout(() =>requestAnimationFrame(()=>setList(data)),100)
   },[searchQuery])
 
 
