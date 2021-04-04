@@ -1,0 +1,75 @@
+.tournament-slider {
+ 
+
+  &__slide {
+    // margin-right: 50px;
+    height: 60vh !important;
+  }
+  .swiper-button-prev {
+    left: -60px;
+  }
+  .swiper-button-next {
+    right: -60px;
+  }
+  &, &__titles {
+    overflow: visible !important;
+  }
+  .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+  }
+  .swiper-pagination-bullet-active {
+    background: white;
+    opacity: 1;
+  }
+  &__titles {
+    position: relative;
+    top: -25px;
+    white-space: nowrap;
+    z-index: 2;
+    font-size: 100px;
+    font-weight: 700;
+    text-align: center;
+    width: 70%;
+    opacity: 0.7;
+    transition: opacity .3s ease ;
+    text-transform: uppercase;
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      height: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.tournament-intro {
+  position: relative;
+  height: 100%;
+
+  &__date {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.date {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    height: 34px;
+    width: 3px;
+    background: white;
+  }
+
+  &__end-registration, &__end-tour {
+    text-align: right;
+    &::before {
+      left: unset; right: 0;
+    }
+  }
+}

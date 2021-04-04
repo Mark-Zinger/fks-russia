@@ -1,5 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+import { useLocation } from 'react-router-dom'
 import { motion } from "framer-motion";
 import cn from 'classnames'
 
@@ -18,10 +19,12 @@ const thumbnailVariants = {
 export default (props) => {
     
     const {children, title=false, background=false,className, ...own} = props;
+    const {pathname} = useLocation();
+    const pageName = pathname.split('/')[1];
 
     return (
         <motion.div 
-          className={cn("page-container", className)}
+          className={cn("page-container", className, pageName)}
           initial="initial"
           animate="enter"
           exit="exit"

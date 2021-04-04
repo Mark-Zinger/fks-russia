@@ -14,7 +14,7 @@ function Counter({ children }) {
       const controls = animate(0, wordLength, {
         duration: 2,
         onUpdate(value) {
-          console.log(value);
+          // console.log(value);
           node.textContent = children.slice(0,value); 
         },
       });
@@ -46,7 +46,7 @@ function Counter2({ children }) {
         transition: { delay: i * 0.1 },
       })) 
     // },1000)
-      console.log('test');
+      // console.log('test');
     
   }, [children])
 

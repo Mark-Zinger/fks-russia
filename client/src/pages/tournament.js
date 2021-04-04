@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,createContext } from 'react';
 import PageContainer from '../components/PageContainer'
 import { useParams } from 'react-router-dom';
-import { Bracket } from 'react-tournament-bracket';
-import TextAnim from '../components/TextAnimateInp'
+import TournamentSlider from '../components/TournamentSlider'
+import TournamentTitle from '../components/TournamentTitle';
 import axios from 'axios';
 
+export const TournamentConetext = createContext();
 
 export default (props) => {
     
@@ -26,9 +27,10 @@ export default (props) => {
       background={tour?.backgroundURL}
       className="page-container_tournament"
     >
-      <h2 className="tournament-title">
-        <TextAnim>{tour.name}</TextAnim>
-      </h2>
+      <TournamentConetext.Provider value={{...tour}}>
+        <TournamentTitle {...tour}/>
+        <TournamentSlider/>
+      </TournamentConetext.Provider>
     </PageContainer>
   )
 }

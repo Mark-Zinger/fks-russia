@@ -2,7 +2,7 @@
     position: relative;
     min-height: 100vh;
     $root: &;
-
+    transition: background .3 ease;
     
     &__title {
         position: fixed;
@@ -40,7 +40,10 @@
     &_tournament {
         #{$root}__body {
             max-width: 1000px;
+            padding-top: 85px;
         }
+        background: rgba($color: #000000, $alpha: .3);
+
     }
 
 }
