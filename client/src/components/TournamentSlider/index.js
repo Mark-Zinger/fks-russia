@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Swiper,SwiperSlide } from 'swiper/react' ;
-import SwiperCore, { Pagination,Parallax, Navigation,Controller } from 'swiper';
+import SwiperCore, { Pagination,Parallax, Navigation,Controller, Mousewheel } from 'swiper';
 import TournamentBracket from '../TournamentBracket';
 import IntroTour from './introTour';
 import TournamentRegister from './TournamentRegister';
 
-SwiperCore.use([Pagination,Parallax,Navigation,Controller]);
+SwiperCore.use([Pagination,Parallax,Navigation,Controller, Mousewheel]);
 
 export default (params) => {
   const [swiper, setSwiper] = useState(false);
@@ -36,6 +36,7 @@ export default (params) => {
     <>
     <Swiper
       className="tournament-slider"
+      mousewheel={true}
       pagination={true}
       parallax={true}
       navigation={true}
