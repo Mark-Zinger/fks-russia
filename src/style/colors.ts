@@ -1,4 +1,4 @@
-const colors: object = {
+const colors = {
     primaryViolet: '#252732',
     darkGrey: '#2c2f33',
     darkGrey2: '#333333',

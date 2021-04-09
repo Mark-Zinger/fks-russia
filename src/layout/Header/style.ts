@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { cols } from '../../style/mixins';
 import colors from '../../style/colors';
-import Link from 'next/link';
+
 
 
 export const Header = styled.header`

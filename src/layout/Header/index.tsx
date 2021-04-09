@@ -1,4 +1,4 @@
-import { Header,Logo, Wrapper, Menu } from './style';
+import { Header, Wrapper } from './style';
 import AuthBar from '../AuthBar'
 import HeaderLogo from './HeaderLogo'
 import HeaderMenuLinks from './HeaderMenuLinks'

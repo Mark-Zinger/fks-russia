@@ -1,18 +1,23 @@
 import { GetStaticProps } from 'next';
+import PageContainer from '../layout/PageContainer';
+import MainSlider from '../layout/MainSlider'
+
 
 interface IndexProps {
     test: string,
-    router:any
+    // router:any
 }
 
 const Index = ({
   test,
-  router
+//   router
 }:IndexProps) => {
 
-
     return (
-       <h1>Привет {test}</h1>
+        <PageContainer className="index_page">
+            <MainSlider/>
+           
+        </PageContainer>
     )
 }
 

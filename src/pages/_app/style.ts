@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html {
-      font-family: ${variables.fonts.mont};
+        font-family: 'Oswald', sans-serif;
       -ms-overflow-style: none;
       scrollbar-width: none;
   }
@@ -37,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		color: white;
 		background-color: ${colors.primaryViolet};
-		font-family: 'Oswald', sans-serif;
   }
 
   h1, h2, h3, h4, h5, span, a {

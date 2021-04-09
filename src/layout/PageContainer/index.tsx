@@ -1,7 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import { useLocation } from 'react-router-dom'
 import { motion } from "framer-motion";
+import { PageContainer,Body } from './style'
 import cn from 'classnames'
 
 const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96], delay: 0.5 };
@@ -12,33 +12,34 @@ const thumbnailVariants = {
   exit: {
     scale: 0.99,
     opacity: 0,
-    transition: { duration: 1.5, ...transition }
+    transition: {  ...transition }
   }
 };
 
 export default (props) => {
     
     const {children, title=false, background=false,className, ...own} = props;
-    const {pathname} = useLocation();
-    const pageName = pathname.split('/')[1];
 
     return (
-        <motion.div 
-          className={cn("page-container", className, pageName)}
+        <PageContainer
+          className={cn("page-container", className)}
           initial="initial"
           animate="enter"
           exit="exit"
           variants={thumbnailVariants}
         >
           <Background {...{background, title}}/>
-          <div className="page-container__body" {...own}>
+          <Body className="page-container__body" {...own}>
               {children}
-          </div>
-        </motion.div>
+          </Body>
+        </PageContainer>
     )
 }
 
 const Background = ({background, title}) => {
+
+  if(typeof document == 'undefined') return null;
+
   return createPortal((
     <>
       {title && <motion.div
@@ -57,6 +58,6 @@ const Background = ({background, title}) => {
         variants={thumbnailVariants}
       />}
     </>
-  ), document.getElementById('root'))
+  ), document.getElementById('__next'))
 }
 

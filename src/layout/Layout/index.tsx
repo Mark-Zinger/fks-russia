@@ -1,12 +1,16 @@
 import Head from 'next/head'
 import Header from '../Header'
+import React from 'react'
 
 
+interface LayoutProps {
+    children: React.ReactNode | [React.ReactNode]
+}
 
 
 const Index = ({
  children
-}) => {
+}:LayoutProps) => {
     return (
         <>
             <Head>
@@ -16,10 +20,10 @@ const Index = ({
                 {/* <meta name="description" content={meta?.description} />
                 <meta name="keywords" content={meta?.keywords} /> */}
             </Head>
-            <body>
-                <Header/>
-                {children}
-            </body>
+            
+            <Header/>
+            {children}
+            
         </>
     )
 }

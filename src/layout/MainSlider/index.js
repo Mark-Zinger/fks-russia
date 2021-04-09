@@ -2,24 +2,22 @@ import React, { useEffect, useState, createRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Parallax, Autoplay } from 'swiper';
 import SlideContent from './slide';
-import {useHttp} from '../../hooks/http.hook'
+// import {useHttp} from '../../hooks/http.hook'
 
-import './style.scss';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
+// import './style.scss';
+
 
 SwiperCore.use([Navigation, Pagination, Parallax, Autoplay]);
 
 export default () => {
 
   const [slides, setSlides] = useState([]);
-  const { loading, request, error, clearError } = useHttp();
+
   const [swiper,setSwiper] = useState(false);
 
   useEffect(async()=>{
-    const data = await request('/tournaments/main-slider');
-    setSlides(data);
+    // const data = await request('/tournaments/main-slider');
+    // setSlides(data);
   },[])
 
   useEffect(()=>{
@@ -30,10 +28,10 @@ export default () => {
   },[slides,swiper])
   
   
-  useEffect(()=>{
-    // if(data) console.log(data);
-    if(error) console.error(error)
-  },[request,error])
+  // useEffect(()=>{
+  //   // if(data) console.log(data);
+  //   if(error) console.error(error)
+  // },[request,error])
 
   return (
     <Swiper

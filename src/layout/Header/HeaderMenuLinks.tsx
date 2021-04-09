@@ -2,6 +2,11 @@ import React from 'react';
 import Link from 'next/link'
 import { Menu } from './style'
 
+interface HeaderLink {
+    href: string,
+    title: string
+}
+
 const HeaderMenuLink = () => {
 
   const links = [
@@ -14,7 +19,7 @@ const HeaderMenuLink = () => {
   ];
 
 
-  const HeaderLink = ({href,title}) => <Link href={href}>{title}</Link>;
+  const HeaderLink = ({href,title}:HeaderLink) => <Link href={href}>{title}</Link>;
 
   return (
       <Menu>
