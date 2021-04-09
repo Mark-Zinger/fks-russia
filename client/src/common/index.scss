@@ -1,9 +1,0 @@
-
-$grid-columns: 24 !default;
-$col-width: 100vw / $grid-columns;
-
-$col-abs: $col-width;
-
-@import './colors.scss';
-@import './typography.scss';
-@import './components.scss';

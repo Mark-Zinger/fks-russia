@@ -1,49 +1,35 @@
 {
-  "name": "fks-russia",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "fcs-russia-next",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server.js",
-    "quickstart": "npm i && npm run client:install && npm run db:reset && npm run dev",
-    "server": "nodemon server.js",
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "client": "npm run start --prefix client",
-    "client:install": "npm install --prefix client",
-    "client:build": "npm run build --prefix client",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "component:create": "node scripts/component/create.js",
+    "component:remove": "node scripts/component/remove.js",
+    "page:create": "node scripts/page/create.js",
+    "page:remove": "node scripts/page/remove.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mark-Zinger/fks-russia.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mark-Zinger/fks-russia/issues"
-  },
-  "homepage": "https://github.com/Mark-Zinger/fks-russia#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "classnames": "^2.2.6",
-    "config": "^3.2.4",
-    "express": "^4.17.1",
-    "express-validator": "^6.3.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.1",
-    "mysql2": "^2.2.5",
-    "nodemailer": "^6.5.0",
-    "nodemailer-smtp-transport": "^2.7.4",
-    "resize-observer-polyfill": "^1.5.1",
-    "sequelize": "^6.5.1",
-    "shortid": "^2.2.15"
+    "axios": "^0.20.0",
+    "colors": "^1.4.0",
+    "next": "9.5.3",
+    "polished": "^3.7.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-transition-group": "^4.4.1",
+    "styled-components": "^5.2.3",
+    "swr": "^0.3.11"
   },
   "devDependencies": {
-    "concurrently": "^5.0.2",
-    "cross-env": "^6.0.3",
-    "nodemon": "^2.0.2",
-    "sequelize-cli": "^6.2.0"
+    "@types/node": "^14.14.37",
+    "@types/react": "^16.14.5",
+    "@types/react-dom": "^16.9.12",
+    "@types/react-transition-group": "^4.4.1",
+    "@types/styled-components": "^5.1.9",
+    "babel-plugin-inline-react-svg": "^1.1.2",
+    "sass": "^1.32.8",
+    "typescript": "^4.2.4"
   }
 }
