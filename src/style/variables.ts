@@ -6,7 +6,8 @@ const variables = {
     },
     videoRatio: 9 / 16 * 100,
     fonts: {
-        mont: 'Mont'
+        ceraPro: 'CeraPro',
+        akzidenzGroteskPro: 'AkzidenzGroteskPro'
     }
 }
 

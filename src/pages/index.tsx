@@ -1,12 +1,15 @@
 import { GetStaticProps } from 'next';
 
 interface IndexProps {
-    test: string
+    test: string,
+    router:any
 }
 
 const Index = ({
-  test
+  test,
+  router
 }:IndexProps) => {
+
 
     return (
        <h1>Привет {test}</h1>
