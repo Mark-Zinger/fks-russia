@@ -1,5 +1,6 @@
 import nextConnect from 'next-connect';
-const { Tournaments, Game, MainPageSlider} = require('../models');
+import { Tournaments, Game, MainPageSlider} from '../../../../db/models'
+// const { Tournaments, Game, MainPageSlider} = require('../models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -32,8 +33,6 @@ const handler = nextConnect()
     }  
   })
     
-    res.json({query,method, body,user})
-  })
 
 
 export default handler;
