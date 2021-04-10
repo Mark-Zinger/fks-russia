@@ -1,7 +1,5 @@
 import nextConnect from 'next-connect';
 import { Tournaments, Game, MainPageSlider} from '../../../../db/models'
-// const { Tournaments, Game, MainPageSlider} = require('../models');
-
 
 const handler = nextConnect()
   .get(async (req, res) => {
@@ -19,7 +17,6 @@ const handler = nextConnect()
         include: [{
           model: Game,
           as: 'game',
-          // fields: ['title'],
         }]
       }]
     })
@@ -29,6 +26,5 @@ const handler = nextConnect()
     res.status(500).json(e);
   }  
 })
-
 
 export default handler;

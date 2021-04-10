@@ -12,7 +12,7 @@ export default (props) => {
     const spring = useSpring(y, physics);
 
     const {backgroundURL,dateBegin, fond, game, name} = props;
-    console.log(props);
+    // console.log(props);
 
     return (
         <>

@@ -1,35 +1,37 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import PageContainer from '../layout/PageContainer';
-import MainSlider from '../layout/MainSlider'
+import MainSlider from '../layout/MainSlider';
+import { absoluteUrl } from '../../middleware/utils';
+
 
 
 interface IndexProps {
-    test: string,
+  mainSlider: [],
     // router:any
 }
 
-const Index = ({
-  test,
-//   router
-}:IndexProps) => {
-
+const Index = ({mainSlider}:IndexProps) => {
     return (
         <PageContainer className="index_page">
-            <MainSlider/>
+            <MainSlider slides={mainSlider}/>
            
         </PageContainer>
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-    const test = 'МИР!';
+export const getServerSideProps: GetServerSideProps = async ({req}) => {
 
-    return {
-        props: {
-            test
-        },
-        // revalidate: 1
-    }
+  const { origin } = absoluteUrl(req);
+  
+  const mainSlider = await fetch(origin+'/api/tournaments/main-slider')
+    .then(async data => await data.json())
+
+  return {
+      props: {
+        mainSlider
+      },
+      // revalidate: 1
+  }
 }
 
 export default Index
