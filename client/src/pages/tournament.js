@@ -23,7 +23,7 @@ export default (props) => {
 
   return (
     <PageContainer 
-      // title={"Турнир"}
+      title={"Поиск Команды"}
       background={tour?.backgroundURL}
       className="page-container_tournament"
     >
