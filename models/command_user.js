@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 
       CommandUser.belongsTo(models.UserAuth, {
         foreignKey: 'id_user',
-        as: 'user_auth'
+        as: 'user'
       });
       CommandUser.belongsTo(models.Command, {
         foreignKey: 'id_command',

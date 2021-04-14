@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     role: DataTypes.STRING(8),
   }, {
     sequelize,
-    tableName: 'user_auth',
+    tableName: 'user',
     modelName: 'UserAuth',
     timestamps: false
   });
