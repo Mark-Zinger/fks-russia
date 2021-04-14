@@ -12,21 +12,21 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
-      command_id:{
+      id_command:{
         type: Sequelize.INTEGER,
         references: {
           model: 'command',
           key: 'id',
-          as: 'command_id'
+          as: 'id_command'
         },
         onDelete: 'CASCADE'
       },
-      user_id: {
+      id_user: {
         type: Sequelize.INTEGER,
         references: {
           model: 'user_auth',
           key: 'id',
-          as: 'user_id'
+          as: 'id_user'
         }
       }
     });

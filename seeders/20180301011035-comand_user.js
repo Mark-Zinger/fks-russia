@@ -5,85 +5,85 @@ module.exports = {
     return queryInterface.bulkInsert('command_user', [
       {
         isAdmin: true,
-        command_id: 1,
-        user_id: 1
+        id_command: 1,
+        id_user: 1
       },
       {
-        command_id: 1,
-        user_id: 2
+        id_command: 1,
+        id_user: 2
       },
       {
-        command_id: 1,
-        user_id: 3
+        id_command: 1,
+        id_user: 3
       }, 
       {
         isAdmin: true,
-        command_id: 3,
-        user_id: 1
+        id_command: 3,
+        id_user: 1
       },
       {
-        command_id: 3,
-        user_id: 2
+        id_command: 3,
+        id_user: 2
       },
       {
-        command_id: 3,
-        user_id: 3
+        id_command: 3,
+        id_user: 3
       },
       {
         isAdmin: true,
-        command_id: 2,
-        user_id: 4
+        id_command: 2,
+        id_user: 4
       },
       {
-        command_id: 2,
-        user_id: 5
+        id_command: 2,
+        id_user: 5
       },
       {
-        command_id: 2,
-        user_id: 6
+        id_command: 2,
+        id_user: 6
       },
 
       {
         isAdmin: true,
-        command_id: 6,
-        user_id: 4
+        id_command: 6,
+        id_user: 4
       },
       {
-        command_id: 6,
-        user_id: 5
+        id_command: 6,
+        id_user: 5
       },
       {
-        command_id: 6,
-        user_id: 6
+        id_command: 6,
+        id_user: 6
       },
       
       {
-        command_id: 7,
-        user_id: 6
+        id_command: 7,
+        id_user: 6
       },
 
       {
         isAdmin: true,
-        command_id: 7,
-        user_id: 4
+        id_command: 7,
+        id_user: 4
       },
       {
-        command_id: 7,
-        user_id: 5
+        id_command: 7,
+        id_user: 5
       },
       {
-        command_id: 7,
-        user_id: 7
+        id_command: 7,
+        id_user: 7
       },
 
       {
         isAdmin: true,
-        command_id: 7,
-        user_id: 8
+        id_command: 7,
+        id_user: 8
       },
       {
-        command_id: 7,
-        user_id: 9
+        id_command: 7,
+        id_user: 9
       },
     ], {});
   },

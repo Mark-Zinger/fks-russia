@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({
 app.use('/auth', require('./routes/auth.routes'))
 app.use('/tournaments', require('./routes/tournaments.routes'))
 app.use('/game', require('./routes/game.routes'))
+app.use('/teams', require('./routes/teams.routes'))
+
 
 
 // app.use('/api/link', require('./routes/link.routes'))
@@ -35,11 +37,6 @@ const PORT =  5000
 
 async function start() {
   try {
-    // await mongoose.connect(config.get('mongoUri'), {
-    //   useNewUrlParser: true,
-    //   useUnifiedTopology: true,
-    //   useCreateIndex: true
-    // })
     app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
   } catch (e) {
     console.log('Server Error', e.message)

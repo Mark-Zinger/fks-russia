@@ -5,12 +5,18 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class CommandUser extends Model { 
     static associate(models) {
-      // CommandUser.belongsToMany(models.Ingredient, {
-      //   through: "RecipeIngredient",
-      //   foreignKey: 'recipeId',
-      //   as: 'ingredients'
-      // });
-  } };
+
+      CommandUser.belongsTo(models.UserAuth, {
+        foreignKey: 'id_user',
+        as: 'user_auth'
+      });
+      CommandUser.belongsTo(models.Command, {
+        foreignKey: 'id_command',
+        as: 'command'
+      });
+     
+    } 
+  };
   CommandUser.init({
     id: {
       allowNull: false,
@@ -31,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     
   }, {
     sequelize,
-    tableName: 'CommandUser',
+    tableName: 'command_user',
     modelName: 'CommandUser',
     timestamps: false
   });
