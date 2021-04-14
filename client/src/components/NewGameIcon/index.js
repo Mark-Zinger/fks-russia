@@ -1,7 +1,7 @@
 import React,{useCallback, useContext} from 'react';
 import cn from 'classnames';
 import UseSVG from '../useSVG';
-import PageContext from '../../pages/PageContext';
+import { TournamentsPageContext } from '../../pages/tournaments';
 import throttle from'lodash.throttle';
 
 
@@ -9,7 +9,7 @@ import throttle from'lodash.throttle';
 export default (props) => {
 
   const {className,value,title,icon,} = props;
-  const {searchQuery, setSearchQuery} = useContext(PageContext);
+  const {searchQuery, setSearchQuery} = props;
 
   const onClickHandler = useCallback((e) => {
     if(searchQuery.game != value) {

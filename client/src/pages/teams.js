@@ -1,10 +1,10 @@
 import React,{createContext, useEffect, useState} from 'react';
 import PageContainer from '../components/PageContainer';
-import TournamentsList from '../components/TournamentsList';
+import TournamentsList from '../components/AnimatedList';
 import TournamentSearch from '../components/TournamentSearch';
 import axios from 'axios';
-
-export const TournamentsPageContext = createContext();
+import PageContext from './PageContext';
+import TeamList from '../components/TeamList'
 
 export default () => {
 
@@ -20,7 +20,6 @@ export default () => {
     const params = {};
     if(search.trim()) params.search = search;
     if(game) params.game = game;
-
     
     const {data} = await axios.get('/tournaments',{params})
     console.log(data);
@@ -31,15 +30,18 @@ export default () => {
 
 
   return (
-    <TournamentsPageContext.Provider value={{searchQuery, setSearchQuery}}>
+    <PageContext.Provider value={{searchQuery, setSearchQuery}}>
       <PageContainer 
         title={"Команды"}
         background="/resources/images/background/dota_6.jpg"
       >
-        <TournamentSearch/>
+        <TournamentSearch
+          placeholder="Найти команду..."
+        />
+        <TeamList/>
         {/* <TournamentsList list={list}/> */}
       </PageContainer>
-    </TournamentsPageContext.Provider>
+    </PageContext.Provider>
   )
 }
 

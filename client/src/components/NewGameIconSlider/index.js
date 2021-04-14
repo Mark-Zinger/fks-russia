@@ -17,7 +17,7 @@ export default (props) => {
   useEffect(async()=>{
     const games = await request('/game');
     console.log(games);
-    setGames(games);
+    setGames(games)
   },[])
 
   useEffect(()=>{

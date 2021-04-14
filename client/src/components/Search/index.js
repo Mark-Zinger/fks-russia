@@ -1,16 +1,12 @@
 import React,{useCallback, useContext} from 'react'
 import SearchInput from '../SearchInput'
 import GameIconSlider from '../GameIconSlider'
-import PageContext from '../../pages/PageContext';
 import debounce from'lodash.debounce';
 
 
 export default (params) => {
 
-  const {searchQuery, setSearchQuery} = useContext(PageContext);
-  const {
-    placeholder="Поиск турниров..."
-  } = params;
+  const {searchQuery, setSearchQuery} = params;
 
   const onChangeInput = useCallback((e) => {
     const newSearchQuery = {...searchQuery}
@@ -21,7 +17,7 @@ export default (params) => {
   return (
     <div className="tournament-search">
       <SearchInput 
-        placeholder={placeholder} 
+        placeholder="Поиск турниров..." 
         onChange={debounce(onChangeInput, 500)}
       />
       <GameIconSlider/>

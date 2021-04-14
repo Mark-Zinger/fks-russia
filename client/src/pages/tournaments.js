@@ -1,15 +1,16 @@
 import React,{createContext, useEffect, useState} from 'react';
 import PageContainer from '../components/PageContainer';
-import TournamentsList from '../components/TournamentsList';
+import TournamentsList from '../components/AnimatedList';
 import TournamentSearch from '../components/TournamentSearch';
-import { useHttp } from '../hooks/http.hook';
+import PageContext from './PageContext';
+import ListItem from '../components/AnimatedList/list-item';
+import TournamentItem from '../components/TournamentItem'
 import axios from 'axios';
 
-export const TournamentsPageContext = createContext();
 
 export default () => {
 
-  const  { loading, request, error, clearError } = useHttp();
+
   const [list, setList] = useState([]);
   const [searchQuery, setSearchQuery] = useState({
     search: '',
@@ -33,15 +34,30 @@ export default () => {
 
 
   return (
-    <TournamentsPageContext.Provider value={{searchQuery, setSearchQuery}}>
+    <PageContext.Provider value={{searchQuery, setSearchQuery}}>
       <PageContainer 
         title={"Турниры"}
         background="/resources/images/background/csgo_2.jpg"
       >
         <TournamentSearch/>
-        <TournamentsList list={list}/>
+        <TournamentsList {...{list}}>
+          {
+            list.map((el,i) => (
+              <ListItem key={i} custom={i}>
+                <TournamentItem
+                  href = {el.id}
+                  name = {el.name}
+                  backgroundURL = {el.backgroundURL}
+                  dateBegin = {el.dateBegin}
+                  fond = {el.fond.toLocaleString('ru')}
+                  game = {el.game}
+                />
+              </ListItem>
+            ))
+          }
+        </TournamentsList>
       </PageContainer>
-    </TournamentsPageContext.Provider>
+    </PageContext.Provider>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TournamentConetext } from '../../pages/tournament';
+import PageContext from '../../pages/PageContext';
 import CountDown, {zeroPad} from 'react-countdown'
 import { motion } from 'framer-motion';
 import Button from '../Button'
@@ -8,9 +8,9 @@ import CounterTwo from '../CounterTwo'
 
 const IntroTour = (params) => {
 
-  const tour = useContext(TournamentConetext);
+  const tour = useContext(PageContext);
   console.log(tour);
-  const {game, fond,dateBegin} = useContext(TournamentConetext);
+  const {game, fond,dateBegin} = useContext(PageContext);
   console.log(game);
 
 
@@ -31,7 +31,7 @@ const IntroTour = (params) => {
           {dateBegin &&<CountDown date={dateBegin} renderer={CountDownRender}/> }
             <div className="tournament-intro__comands">
               Участники:
-              <div>
+              <div className="tournament-intro__comands-count">
                 16 / 24
               </div>
             </div>

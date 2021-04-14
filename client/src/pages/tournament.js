@@ -3,9 +3,10 @@ import PageContainer from '../components/PageContainer'
 import { useParams } from 'react-router-dom';
 import TournamentSlider from '../components/TournamentSlider'
 import TournamentTitle from '../components/TournamentTitle';
+import PageContext from './PageContext';
 import axios from 'axios';
 
-export const TournamentConetext = createContext();
+// export const TournamentConetext = createContext();
 
 export default (props) => {
     
@@ -23,14 +24,14 @@ export default (props) => {
 
   return (
     <PageContainer 
-      title={"Поиск Команды"}
+      // title={""}
       background={tour?.backgroundURL}
       className="page-container_tournament"
     >
-      <TournamentConetext.Provider value={{...tour}}>
+      <PageContext.Provider value={{...tour}}>
         <TournamentTitle {...tour}/>
         <TournamentSlider/>
-      </TournamentConetext.Provider>
+      </PageContext.Provider>
     </PageContainer>
   )
 }
