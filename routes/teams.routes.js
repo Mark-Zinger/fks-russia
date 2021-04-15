@@ -9,7 +9,11 @@ const router = Router();
 router.get('/', async(req, res) => {
 
   try {
-    const teams = await CommandTour.findAll({
+
+    const search = req.query.search? req.query.search : false;
+    const game = req.query.game? parseInt(req.query.game) : false;
+
+    const dbQuery = {
       attributes: ['id_command', 'id_tour'],
       include: [
         {
@@ -21,6 +25,8 @@ router.get('/', async(req, res) => {
               model: CommandUser,
               as: 'command_user',
               attributes: ['isAdmin'],
+              // required: true,
+
               include: [
                 {
                   model: UserAuth, 
@@ -37,11 +43,16 @@ router.get('/', async(req, res) => {
           include: [{ model: Game, as: 'game'}]
         },
       ]
-    })
-    
-    const filterTeams = teams.filter(el => el.command.command_user[0])
+    }
 
-    res.json(filterTeams);
+    const where = {}
+    if(game) where['$tour.id_game$'] = game;
+    if(search) where['$command.name$'] = {[Op.like]: `%${search}%`};;
+    
+    dbQuery.where = where;
+
+    const teams = await CommandTour.findAll(dbQuery);
+    res.json(teams);
   } catch (e) {
     res.status(500).json(e);
   }  

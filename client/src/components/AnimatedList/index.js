@@ -1,10 +1,10 @@
 import React, {useEffect,createContext} from 'react';
-import ListItem from './list-item';
-import { motion, useAnimation,AnimateSharedLayout } from "framer-motion";
+import { useAnimation,AnimateSharedLayout } from "framer-motion";
+import cn from 'classnames';
 
 export const AnimatedListContext = createContext();
 
-export default ({children, list}) => {
+export default ({children, list, className}) => {
 
   const controls = useAnimation();
 
@@ -18,7 +18,7 @@ export default ({children, list}) => {
   }, [list])
 
   return (
-    <ul className="tournament-list">
+    <ul className={cn(className)}>
       <AnimatedListContext.Provider value={{controls}}>
         <AnimateSharedLayout>
           {children}
