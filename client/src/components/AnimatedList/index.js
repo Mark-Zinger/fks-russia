@@ -11,7 +11,7 @@ export default ({children, list, className}) => {
   useEffect(() => {
       controls.start(i => ({
         scale: [1.05, 1],
-        opacity: [0,1],
+        opacity: [0,1], 
         y: [-5,0],
         transition: { delay: i * 0.2+0.1 },
       })) 
