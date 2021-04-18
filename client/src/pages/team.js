@@ -17,10 +17,6 @@ export default (props) => {
     const {data} = await axios.get(`/teams/${id}`);
     setTeam(data)
   },[])
-  
-  useEffect(()=> {
-    console.log(team);
-  },[team])
 
   return (
     <PageContainer 

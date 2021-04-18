@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import PageContext from '../../pages/PageContext';
 import CountDown, {zeroPad} from 'react-countdown'
 import { motion } from 'framer-motion';
-import Button from '../Button'
+import Button from '@material-ui/core/Button'
 import CounterTwo from '../CounterTwo'
 
 
-const IntroTour = (params) => {
+const IntroTour = ({toRegister}) => {
 
   const tour = useContext(PageContext);
   console.log(tour);
@@ -45,7 +45,12 @@ const IntroTour = (params) => {
          {fond && <CounterTwo from={0} to={parseInt(fond)} />}  
         </motion.div>
       </div>
-      <Button className="tournament-intro__button">Принять Учатсие</Button>
+      <Button 
+        variant="contained" 
+        color="primary" 
+        className="tournament-intro__button" 
+        onClick={()=>toRegister()}
+      >Принять Учатсие</Button>
      </div>
     </div>
 

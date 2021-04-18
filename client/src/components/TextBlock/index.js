@@ -5,12 +5,13 @@ export default (params) => {
 
   const {
     className,
-    children
+    children,
+    ...owm
   } = params;
 
 
   return (
-    <div className={cn('text-block', className)}>
+    <div className={cn('text-block', className)} {...owm}>
       {children}
     </div>
   );
