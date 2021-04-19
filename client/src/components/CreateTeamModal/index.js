@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from '../Modal';
 import Input from '../Input';
 import { Error } from '../AuthBar/AuthModalLayout';
 import SubmitButton from '../SubmitButton'
-import Snackbar from '@material-ui/core/Snackbar';
+import {AlertContext} from '../Alert'
 
 
 
 const CreateTeamModal = (props) => {
   
   // const {showModal, closeModal} = props;
-  const [errorMessege, setErrorMessege] = useState('')
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
+  const [errorMessege, setErrorMessege] = useState('');
+  const {createAlert} = useContext(AlertContext);
+  const
 
   return (
     <>
@@ -43,11 +32,8 @@ const CreateTeamModal = (props) => {
             type="password"
           />
           <SubmitButton
-            onClick={() => setOpen(true)}
+            onClick={() => createAlert({messege: "Вы подали заявку на участие"})}
           >Создать команду</SubmitButton>
-          <button
-          onClick={() => setOpen(true)}
-          >test</button>
         </form>
     </Modal>
 
