@@ -35,6 +35,8 @@ export default (props) => {
     const clearAlert = () => setAlert({level:'info', messege: false})
     // 'success' | 'info' | 'warning' | 'error';
 
+    window.createAlert = createAlert
+
     return (
       <AlertContext.Provider value={{createAlert, clearAlert}}>
         <motion.div 

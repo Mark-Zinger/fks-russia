@@ -13,7 +13,7 @@ function Counter({ from, to }) {
         node.textContent = value.toLocaleString('ru-RU', { 
           style: 'currency', 
           currency: 'RUB',
-          // maximumFractionDigits: 0
+          maximumFractionDigits: 0
          })
       },
     });

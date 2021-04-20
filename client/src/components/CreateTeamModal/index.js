@@ -12,7 +12,7 @@ const CreateTeamModal = (props) => {
   // const {showModal, closeModal} = props;
   const [errorMessege, setErrorMessege] = useState('');
   const {createAlert} = useContext(AlertContext);
-  const
+  // const
 
   return (
     <>
