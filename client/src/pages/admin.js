@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react';
+import AdminPanel from '../admin'
 import AdminPanelNavBar from '../components/AdminPanelNavBar';
 import AdminPanelBody from '../components/AdminPanelBody';
 import styled from 'styled-components';
@@ -15,12 +16,13 @@ export default () => {
   const [activeLink, setActiveLink] = useState(links[0]);
 
   return (
-    <AdminContext.Provider value={{links, activeLink, setActiveLink}}>
-      <AdminPage>
-        <AdminPanelNavBar/>
-        <AdminPanelBody/>
-      </AdminPage>
-    </AdminContext.Provider>
+    <AdminPanel/>
+    // <AdminContext.Provider value={{links, activeLink, setActiveLink}}>
+    //   <AdminPage>
+    //     <AdminPanelNavBar/>
+    //     <AdminPanelBody/>
+    //   </AdminPage>
+    // </AdminContext.Provider>
   )
 }
 

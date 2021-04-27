@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom'
 export default (props) => {
 
     const {pathname} = useLocation();
-    const isAdminPanel = pathname === '/admin'
+    const isAdminPanel = pathname.includes('admin')
 
 
     return (

@@ -37,6 +37,7 @@
     "mysql2": "^2.2.5",
     "nodemailer": "^6.5.0",
     "nodemailer-smtp-transport": "^2.7.4",
+    "ra-data-json-server": "^3.14.5",
     "resize-observer-polyfill": "^1.5.1",
     "sequelize": "^6.5.1",
     "shortid": "^2.2.15"

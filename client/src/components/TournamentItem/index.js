@@ -12,7 +12,7 @@ export default (props) => {
     backgroundURL,
     dateBegin,
     fond,
-    game,
+    game={title: 'Загрузка...'},
     name,
     ...own
   } = props;
