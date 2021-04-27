@@ -4,6 +4,7 @@ import SwiperCore, { Pagination,Parallax, Navigation,Controller, Mousewheel } fr
 import TournamentBracket from '../TournamentBracket';
 import IntroTour from './introTour';
 import TournamentRegister from './TournamentRegister';
+import TournamentTable from '../TournamentTable'
 
 SwiperCore.use([Pagination,Parallax,Navigation,Controller, Mousewheel]);
 
@@ -18,6 +19,8 @@ export default (params) => {
       swTitles.slideTo(1,0)
       swiper.controller.control = swTitles;
       swTitles.controller.control = swiper;
+
+      // window.addEventListener()
     };
   }, [swiper,swTitles]);
 
@@ -27,7 +30,7 @@ export default (params) => {
 
   const changeSlide = useCallback(
     (slideIndex) => {
-      swiper.slideTo(slideIndex, speed)
+      if (swiper)swiper.slideTo(slideIndex, speed)
     },
     [swiper,swTitles],
   )
@@ -48,14 +51,18 @@ export default (params) => {
         <TournamentRegister/>
       </SwiperSlide>
       <SwiperSlide {...slideProps}>
-        <IntroTour/>
+        <IntroTour toRegister={() => changeSlide(0)} />
       </SwiperSlide>
       <SwiperSlide {...slideProps}>
         <TournamentBracket/>    
       </SwiperSlide>
+      <SwiperSlide {...slideProps}>
+        <TournamentTable swiper={swiper}/>
+      </SwiperSlide>
     </Swiper>
     <Swiper 
       className="tournament-slider__titles"
+      mousewheel={true}
       onSwiper={setSWTitles}
       parallax={true}
       speed={speed}
@@ -77,7 +84,15 @@ export default (params) => {
       <div
         onClick={()=>changeSlide(2)}
         data-swiper-parallax-opacity="0.3"
+        data-swiper-parallax={-100}
+
       >Турнирная сетка</div> 
+      </SwiperSlide>
+      <SwiperSlide>
+      <div
+        onClick={()=>changeSlide(3)}
+        data-swiper-parallax-opacity="0.3"
+      >Участники</div> 
       </SwiperSlide>
     </Swiper>
     </>

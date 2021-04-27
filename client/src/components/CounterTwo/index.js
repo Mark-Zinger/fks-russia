@@ -10,7 +10,11 @@ function Counter({ from, to }) {
     const controls = animate(from, to, {
       duration: 1,
       onUpdate(value) {
-        node.textContent = value.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB',maximumFractionDigits:0 })
+        node.textContent = value.toLocaleString('ru-RU', { 
+          style: 'currency', 
+          currency: 'RUB',
+          maximumFractionDigits: 0
+         })
       },
     });
 

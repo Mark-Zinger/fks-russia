@@ -60,5 +60,5 @@ const Question = ({context, setModalType}) => {
   }
 }
 
-const Error = ({messege}) => messege && <div className="modal__error">{messege}</div>;
+export const Error = ({messege}) => messege && <div className="modal__error">{messege}</div>;
 

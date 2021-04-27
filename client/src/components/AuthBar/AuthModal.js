@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import SubmitButton from '../SubmitButton';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import { AnimatePresence, motion, AnimateSharedLayout } from "framer-motion";  
+import { AnimatePresence } from "framer-motion";  
 
 
 export const AuthModalContext = createContext();

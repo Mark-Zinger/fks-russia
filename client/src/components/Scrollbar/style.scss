@@ -1,0 +1,12 @@
+.scrollbar {
+  position: relative;
+
+  &__track {
+    position: absolute;
+    height: 40px;
+    width: 6px;
+    right: 0;
+    top: 0;
+    background: blue;
+  }
+}

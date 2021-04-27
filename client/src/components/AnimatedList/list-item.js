@@ -1,17 +1,18 @@
 import React,{useContext} from 'react';
 import { motion } from 'framer-motion';
-import { AnimatedListContext } from '../AnimatedList'
+import { AnimatedListContext } from '../AnimatedList';
+import cn from 'classnames'
 
 
 export default (props) => {
 
-  const { custom, children ,...own} = props;
+  const { custom, children, className,...own} = props;
   const {controls} = useContext(AnimatedListContext)
 
   return (
     <motion.li
-      className="tournament-list__item"
       custom={custom}
+      className={cn(className)}
       initial={{opacity: 0}} 
       animate={controls} 
       exit={{opacity:0}}

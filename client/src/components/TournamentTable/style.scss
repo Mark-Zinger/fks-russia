@@ -1,0 +1,74 @@
+.tournament-table {
+
+  $background: white;
+  color: black;
+  border-radius: 3px;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    text-align: center;
+    background: $background;
+    padding: 10px 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    
+    &-team, &-date, &-status {
+      width: 16%;
+    }
+    &-date {
+      margin-left: 50%;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding-left: 0;
+    height: 48vh;
+    overflow-y:  scroll;
+    // overflow-x: visible;
+    margin: 0;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+  &__item {
+    background: $background;
+    transition: background .3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    min-height: 55px;
+    padding: 10px;
+    cursor: pointer;
+
+    &:nth-child(2n-1) {
+      background: $dark-grey-3;
+    }
+    &:hover {
+      background: $primary-yellow;
+    }
+  }
+  &__avatar {
+    height: 30px;
+    margin-right: 10px;
+  }
+  &__name {
+    margin-right: 54%;
+    display: flex;
+    align-items: center;
+  }
+  &__date {
+    min-width: 140px;
+    text-align: center;
+  }
+  &__status {
+    min-width: 190px;
+    text-align: center;
+    &_0 { background: yellow;}
+    &_1 { background: greenyellow;}
+    &_2 { background: tomato;}
+  }
+}

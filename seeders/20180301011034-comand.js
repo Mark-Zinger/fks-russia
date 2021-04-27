@@ -44,7 +44,7 @@ module.exports = {
         password: "123"
       },
       {
-        name: "Команда по Доте 3",
+        name: "Команда по FIFA 4",
         password: "123"
       },
       {

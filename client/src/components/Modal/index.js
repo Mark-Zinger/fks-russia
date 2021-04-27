@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import { AnimatePresence, motion } from "framer-motion";  
 
 
-const Modal = ({ showModal, children, closeModal, className, ...ownProps }) => { 
+const   Modal = ({ showModal, children, closeModal, className, ...ownProps }) => { 
 
     useEffect(()=>{
         document.body.classList[showModal?'add':'remove']('lock-scroll');

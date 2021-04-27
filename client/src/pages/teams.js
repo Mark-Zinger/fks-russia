@@ -1,6 +1,8 @@
 import React,{createContext, useEffect, useState} from 'react';
 import PageContainer from '../components/PageContainer';
-import TournamentsList from '../components/AnimatedList';
+import AnimatedList from '../components/AnimatedList';
+import ListItem from '../components/AnimatedList/list-item';
+import TeamItem from '../components/TeamList/TeamItem'
 import TournamentSearch from '../components/TournamentSearch';
 import axios from 'axios';
 import PageContext from './PageContext';
@@ -21,8 +23,8 @@ export default () => {
     if(search.trim()) params.search = search;
     if(game) params.game = game;
     
-    const {data} = await axios.get('/tournaments',{params})
-    console.log(data);
+    const {data} = await axios.get('/teams',{params})
+    console.log({data});
     setList([]);
     requestAnimationFrame(() =>setList(data))
 
@@ -38,8 +40,16 @@ export default () => {
         <TournamentSearch
           placeholder="Найти команду..."
         />
-        <TeamList/>
-        {/* <TournamentsList list={list}/> */}
+        <AnimatedList list={list} className="team-list">
+          { list[0] ?
+            list.map((el,i) => (
+              <ListItem key={i} custom={i} className="team-list__item" >
+                <TeamItem {...el}/>
+              </ListItem>
+            )) 
+            : "По вашему запросу команд не найдено :("
+          }
+        </AnimatedList>
       </PageContainer>
     </PageContext.Provider>
   )

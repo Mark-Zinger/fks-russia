@@ -40,10 +40,12 @@ export default () => {
         background="/resources/images/background/csgo_2.jpg"
       >
         <TournamentSearch/>
-        <TournamentsList {...{list}}>
+        <TournamentsList {...{list}}
+         className="tournament-list"
+        >
           {
             list.map((el,i) => (
-              <ListItem key={i} custom={i}>
+              <ListItem key={i} custom={i} className="tournament-list__item">
                 <TournamentItem
                   href = {el.id}
                   name = {el.name}

@@ -1,6 +1,7 @@
 .team-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding-left: 0;
   list-style: none;
 
@@ -12,10 +13,18 @@
     color: black;
     overflow: hidden;
     position: relative;
-    padding: 10px 15px 15px 28%;
+    padding: 10px 15px 15px 10px;
     cursor: pointer;
+    width: 442px;
   }
-  &__image {
-    
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__svg {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+
   }
 }
