@@ -23,13 +23,13 @@ const TournamentRister = (params) => {
         <div className="tournament-register__buttons">
           {/* <Link to="/teams"> */}
             <Button
-              variant="contained" color="secondary"
+              variant="contained" color="secondary" button
               // onClick={handleClick}
             >Найти команду
             </Button>
           {/* </Link> */}
           <Button
-            variant="contained" color="primary"
+            variant="contained" color="primary" button
             onClick={()=> setIsOpenModal(true)}
           >Создать команду</Button>
           <CreateTeamModal

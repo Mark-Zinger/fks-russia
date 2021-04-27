@@ -7,6 +7,7 @@ import Main from './pages/main'
 import Tournaments from './pages/tournaments'
 import Tournament from './pages/tournament'
 import Team from './pages/teams'
+import AdminPanel from './pages/admin'
 import { AnimatePresence } from 'framer-motion'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route exact path="/tournaments" component={Tournaments}/>
                 <Route path="/tournaments/:id" component={Tournament}/>
                 <Route path="/teams" component={Team}/>
+                <Route path="/admin" component={AdminPanel}/>
               </Switch>
             </AnimatePresence>
             )}

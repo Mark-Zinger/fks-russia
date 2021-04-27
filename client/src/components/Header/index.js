@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom';
 import HeaderLogo from '../HeaderLogo';
 import HeaderMenuLinks from './HeaderMenuLinks';
 import { motion } from 'framer-motion';
-
-
-
+import { useLocation } from 'react-router-dom'
 
 export default (props) => {
+
+    const {pathname} = useLocation();
+    const isAdminPanel = pathname === '/admin'
+
+
     return (
+        !isAdminPanel &&
         <motion.div className="header">
             <div className="header__wrapper">
                 <Link to="/" className="header__logo">

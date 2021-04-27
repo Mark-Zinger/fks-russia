@@ -73,10 +73,10 @@ router.post('/',
 
         const team = await Command.create({ name, password});
         if(team) {
-          const comandUser = await CommandUser.create({
+          const commandUser = await CommandUser.create({
             isAdmin: true,
             id_command: team.id,
-            id_user: 
+            id_user
           }) 
         }
 

@@ -1,5 +1,13 @@
 .tournament-bracket {
   user-select: none;
+
+  &__iframe {
+    width: 100%;
+    height: 100%;
+    .navbar-brand {
+      display: none;
+    }
+  }
   &__container {
     display: flex;
   }
