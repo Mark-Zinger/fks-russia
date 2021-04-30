@@ -27,7 +27,14 @@ module.exports = (sequelize, DataTypes) => {
     },
     fullname: DataTypes.STRING(128),
     avatar: DataTypes.STRING,
-    role: DataTypes.STRING(8),
+    role: {
+      type: DataTypes.STRING(1),
+      defaultValue: '0'
+    },
+    confirm: {
+      type: DataTypes.STRING(1),
+      defaultValue: '0'
+    },
   }, {
     sequelize,
     tableName: 'user',

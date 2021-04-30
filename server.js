@@ -2,6 +2,8 @@ const express = require('express')
 const config = require('config')
 const path = require('path')
 const bodyParser = require('body-parser');
+const adminRoutes = require('./routes/admin.routes')
+
 const db = require('./models')
 
 
@@ -18,10 +20,9 @@ app.use('/tournaments', require('./routes/tournaments.routes'))
 app.use('/game', require('./routes/game.routes'))
 app.use('/teams', require('./routes/teams.routes'))
 
+adminRoutes(app)
+// app.use(crud('/users', sequelizeCrud(UserAuth)))
 
-
-// app.use('/api/link', require('./routes/link.routes'))
-// app.use('/t', require('./routes/redirect.routes'))
 
 app.use('/resources', express.static(path.join(__dirname, '/resources')))
 
