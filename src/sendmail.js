@@ -12,7 +12,7 @@ const sendmail = ({email, fullname}) => {
     host: 'smtp.gmail.com',
     auth: {
       user: 'kibersportfederation@gmail.com',
-      pass: ''
+      pass: 'fcs-russia-pass'
     }
   }));
   
@@ -24,7 +24,9 @@ const sendmail = ({email, fullname}) => {
   })
 }
 
-module.exports = sendmail;
+sendmail('lllessive@gmail.com', 'Михаил').then(console.log)
+
+// module.exports = sendmail;
 
 
 

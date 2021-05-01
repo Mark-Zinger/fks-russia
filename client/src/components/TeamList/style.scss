@@ -20,6 +20,8 @@
   &__wrapper {
     display: flex;
     align-items: center;
+    color: inherit;
+    text-decoration: none;
   }
   &__svg {
     width: 80px;

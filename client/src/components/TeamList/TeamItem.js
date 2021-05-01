@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom'
 const TeamItem = (props) => {
   const {
     command: {name,command_user},
-    tour
+    tour,
+    id_command
   } = props;
 
   return (
-    <Link  to={`teams/${tour.id}`} className="team-list__wrapper">
+    <Link  to={`teams/${id_command}`} className="team-list__wrapper">
       <UseSvg id={tour.game.icon} className="team-list__svg"/>
       <div className="team-list__info">
         <div className="team-list__name">{name}</div>

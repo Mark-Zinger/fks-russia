@@ -7,7 +7,7 @@ const Op = Sequelize.Op;
 
 const router = Router();
 
-router.get('/:id', async(req, res) => {
+router.get('/:id?', async(req, res) => {
 
   try {
 
@@ -27,8 +27,6 @@ router.get('/:id', async(req, res) => {
               model: CommandUser,
               as: 'command_user',
               attributes: ['isAdmin'],
-              // required: true,
-
               include: [
                 {
                   model: UserAuth, 
