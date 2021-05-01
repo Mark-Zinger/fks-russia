@@ -15,18 +15,17 @@ export default (props) => {
 
   useEffect(async() => {
     const {data} = await axios.get(`/teams/${id}`);
+    console.log(data)
     setTeam(data)
   },[])
 
   return (
     <PageContainer 
-      // title={""}
-      background={team?.backgroundURL}
+      // background={team?.backgroundURL}
       className="page-container_tournament"
     >
       <PageContext.Provider value={{...team}}>
-        <TournamentTitle {...team}/>
-        <TournamentSlider/>
+        <div className="div">{id}</div>
       </PageContext.Provider>
     </PageContainer>
   )

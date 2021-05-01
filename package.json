@@ -43,7 +43,8 @@
     "ra-data-json-server": "^3.14.5",
     "resize-observer-polyfill": "^1.5.1",
     "sequelize": "^6.5.1",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "typescript": "^4.2.4"
   },
   "devDependencies": {
     "concurrently": "^5.0.2",

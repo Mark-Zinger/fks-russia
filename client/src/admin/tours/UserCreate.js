@@ -1,24 +1,23 @@
 import * as React from "react";
 import {
-    Edit,
+    Create,
     SimpleForm,
     SelectInput,
     TextInput,
     BooleanInput,
+    ImageInput,
     ImageField,
-    ImageInput
+    useNotify, useRefresh, useRedirect
 } from 'react-admin';
 import RoleChoises from './RoleChoices.json'
 import ConfirmChoices from './ConfirmChoices.json'
 
 export default props => {
   
-  return <Edit 
-    {...props} 
-    mutationMode="pessimistic"
+  return <Create
+    {...props}
   >
     <SimpleForm>
-      <TextInput source="id" />
       <TextInput label="Имя пользователя" source="username" />
       <TextInput source="email" type="email" />
       <TextInput label="Полное Имя" source="fullname" />
@@ -26,7 +25,7 @@ export default props => {
         <ImageField source="src" title="title" />
       </ImageInput>
       <SelectInput label="Роль" source="role" choices={RoleChoises} />
-      <SelectInput label="Подтверждён?" source="confirm" choices={ConfirmChoices} />
+      <SelectInput label="Статус пользователя" source="confirm" choices={ConfirmChoices} />
     </SimpleForm>
-  </Edit>
+  </Create>
 };

@@ -7,12 +7,13 @@ const Op = Sequelize.Op;
 
 const router = Router();
 
-router.get('/', async(req, res) => {
+router.get('/:id', async(req, res) => {
 
   try {
 
     const search = req.query.search? req.query.search : false;
     const game = req.query.game? parseInt(req.query.game) : false;
+    const id_team =  req.params.id ? req.params.id : false;
 
     const dbQuery = {
       attributes: ['id_command', 'id_tour'],
@@ -47,6 +48,7 @@ router.get('/', async(req, res) => {
     }
 
     const where = {}
+    if(id_team) where['$command.id$'] = id_team;
     if(game) where['$tour.id_game$'] = game;
     if(search) where['$command.name$'] = {[Op.like]: `%${search}%`};;
     
@@ -58,6 +60,15 @@ router.get('/', async(req, res) => {
     res.status(500).json(e);
   }  
 })
+
+// router.get('/:id', async(req, res) => {
+
+//   try {
+//     const team_id = req.params.id;
+//   } catch (e) {
+
+//   }
+// })
 
 router.post('/',
   [

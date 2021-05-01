@@ -1,17 +1,15 @@
 import React from 'react';
 import UseSvg from '../useSVG'
+import { Link } from 'react-router-dom'
 
 const TeamItem = (props) => {
-  
-  console.log('test',props);
   const {
     command: {name,command_user},
     tour
   } = props;
 
   return (
-    <div className="team-list__wrapper">
-      {/* < src="/" alt="" className="team-list__avatar"/> */}
+    <Link  to={`teams/${tour.id}`} className="team-list__wrapper">
       <UseSvg id={tour.game.icon} className="team-list__svg"/>
       <div className="team-list__info">
         <div className="team-list__name">{name}</div>
@@ -26,7 +24,7 @@ const TeamItem = (props) => {
           {tour.name}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -21,8 +21,6 @@ app.use('/game', require('./routes/game.routes'))
 app.use('/teams', require('./routes/teams.routes'))
 
 adminRoutes(app)
-// app.use(crud('/users', sequelizeCrud(UserAuth)))
-
 
 app.use('/resources', express.static(path.join(__dirname, '/resources')))
 
