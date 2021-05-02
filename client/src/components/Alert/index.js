@@ -26,7 +26,7 @@ const Alert = ({ level, messege, hash}) => {
   },[hash])
 
   return createPortal(
-    <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleClose}>
+    <Snackbar open={isOpen} autoHideDuration={3000} onClose={handleClose}>
       <MuiAlertInst onClose={handleClose} severity={level}>
         {messege}
       </MuiAlertInst>

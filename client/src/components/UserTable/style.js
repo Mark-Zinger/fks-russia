@@ -5,11 +5,11 @@ export const Table = styled(Paper)`
   width: 100%;
   padding: 20px;
   min-height: 100px;
+  margin-bottom: 20px;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
 `
 
 export const User = styled(Paper)`

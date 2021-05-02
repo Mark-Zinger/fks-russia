@@ -59,15 +59,6 @@ router.get('/:id?', async(req, res) => {
   }  
 })
 
-// router.get('/:id', async(req, res) => {
-
-//   try {
-//     const team_id = req.params.id;
-//   } catch (e) {
-
-//   }
-// })
-
 router.post('/',
   [
     check('name', 'Введите имя команды').isLength({ min: 6 }),
@@ -91,6 +82,18 @@ router.post('/',
 
 
         res.json(team)
+      } catch (e) {
+        console.log(e);
+        res.status(500).json(e)
+      }
+
+    }
+  )
+
+  router.post('/join',
+    async(req, res) => {
+      try {
+        res.send('Вы стали участником команды')
       } catch (e) {
         console.log(e);
         res.status(500).json(e)
