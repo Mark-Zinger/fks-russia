@@ -8,12 +8,15 @@ export const Table = styled(Paper)`
 
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+
 `
 
 export const User = styled(Paper)`
   display: flex;
-  min-height: 100px;
-  width: 400px;
+  height: 80px;
+  padding: 20px;
+  width: 49%;
   cursor: pointer;
   background: rgba(0,0,0,0);
   align-items: center;
@@ -25,8 +28,13 @@ export const User = styled(Paper)`
 export const Avatar = styled.img`
   border-radius: 50%;
   overflow: hidden;
-  height: 80%;
+  margin-right: 20px;
+  height: 60px;
+
 `
 export const Nickname = styled.div`
-
+  font-weight: bold;
+  font-size: 26px;
+  margin-left: 10px;
+  color: grey;
 `
