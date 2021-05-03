@@ -22,6 +22,7 @@ module.exports = {
       dateBegin: Sequelize.DATE,
       backgroundURL: Sequelize.STRING,
       fond: Sequelize.INTEGER,
+      brackets_url: Sequelize.STRING(128)
     });
   },
   down: async (queryInterface, Sequelize) => {

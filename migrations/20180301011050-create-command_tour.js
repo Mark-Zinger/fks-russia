@@ -24,7 +24,12 @@ module.exports = {
           key: 'id',
           as: 'id_tour'
         }
-      }
+      },
+      confirm: {
+        type: Sequelize.STRING(1),
+        defaultValue: '0'
+      },
+      createdAt: Sequelize.DATE,
     });
   },
   down: function(queryInterface, Sequelize) {

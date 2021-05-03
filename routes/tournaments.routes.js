@@ -1,5 +1,5 @@
 const {Router, request} = require('express');
-const { Tournaments, Game, MainPageSlider} = require('../models');
+const { Tournaments, Game, MainPageSlider, Command,CommandUser} = require('../models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -68,10 +68,17 @@ router.get('/:id', async(req, res) => {
     const tournament_id = req.params.id;
     const tournament = await Tournaments.findOne({
       where: {id: tournament_id} ,
-      include: [{
+      include: [
+        {
           model: Game,
           as: 'game'
-      }]
+        },
+        {
+          model: Command,
+          as: 'command',
+          through: {attributes: ['confirm', 'createdAt']},
+        }
+      ]
     })
     res.json(tournament)
   } catch (e) {

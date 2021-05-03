@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../Button'
 import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion';
+import axios from 'axios';
 import { useHttp } from '../../hooks/http.hook';
 import Counter from '../Counter'
 
@@ -16,9 +17,9 @@ export default ({children}) => {
     const { request } = useHttp();
 
     useEffect(async()=>{
-        const data = await request('/tournaments');
-        console.log(data);
-        setSlides(data);
+        axios.get('/tournaments')
+        .then(({data}) => setSlides(data))
+        .catch(console.error);
     },[])
 
     return (

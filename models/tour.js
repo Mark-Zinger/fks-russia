@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         as: 'game'
       });
       Tournaments.hasMany(models.MainPageSlider, { foreignKey: 'id' });
+
+      Tournaments.belongsToMany(models.Command, {
+        through: "CommandTour",
+        foreignKey: 'id_tour',
+        as: 'command'
+      });
     } 
 };
   Tournaments.init({
@@ -18,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     dateBegin: DataTypes.DATE,
     backgroundURL: DataTypes.STRING,
     fond: DataTypes.INTEGER,
+    brackets_url:  DataTypes.STRING(128)
   }, {
     sequelize,
     tableName: 'tour',

@@ -8,6 +8,14 @@ module.exports = {
         id_tour: 18
       },
       {
+        id_command: 1,
+        id_tour: 10
+      },
+      {
+        id_command: 1,
+        id_tour: 14
+      },
+      {
         id_command: 2,
         id_tour: 18
       },

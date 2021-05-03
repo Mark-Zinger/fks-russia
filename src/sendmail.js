@@ -24,7 +24,7 @@ const sendmail = ({email, fullname}) => {
   })
 }
 
-sendmail('lllessive@gmail.com', 'Михаил').then(console.log)
+// sendmail('lllessive@gmail.com', 'Михаил').then(console.log)
 
 // module.exports = sendmail;
 

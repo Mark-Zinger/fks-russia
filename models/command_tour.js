@@ -33,8 +33,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     id_tour: {
       type: DataTypes.INTEGER,
-    }
-    
+    },
+    confirm: {
+      type: DataTypes.STRING(1),
+      defaultValue: '0'
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date ()
+    },
   }, {
     sequelize,
     tableName: 'command_tour',

@@ -18,7 +18,7 @@ export default configureStore({
     // counter: counterReducer,
     user: userReducer,
     auth: authReducer,
-    router: connectRouter(history),
+    // router: connectRouter(history),
     // admin: adminReducer,
   },
 });

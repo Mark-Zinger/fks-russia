@@ -1,6 +1,6 @@
 import {createContext} from 'react';
 
 
-const TournamentConetext = createContext();
+const PageConetext = createContext();
 
-export default TournamentConetext;
+export default PageConetext;

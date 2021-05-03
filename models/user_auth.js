@@ -5,8 +5,13 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class UserAuth extends Model { 
     static associate(models) {
-      UserAuth.hasMany(models.CommandUser, { foreignKey: 'id' });
-  } };
+      UserAuth.belongsToMany(models.Command, {
+        through: "CommandUser",
+        foreignKey: 'id_user',
+        as: 'command'
+      });
+    } 
+  };
   UserAuth.init({
    
     email: {

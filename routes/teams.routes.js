@@ -7,6 +7,32 @@ const Op = Sequelize.Op;
 
 const router = Router();
 
+router.get('/test', async (req, res) => {
+  try {
+    const comand = await Command.findAll({
+      include: [
+        {
+          model: Tournaments,
+          as: 'tour',
+          through: {attributes: []}
+        },
+        {
+          model: UserAuth,
+          as: 'user',
+          through: {
+            attributes: []
+          }
+        },
+      ]
+    });
+    res.json(comand);
+  } catch (e) {
+    res.status(500).json(e)
+  }
+  
+})
+
+
 router.get('/:id?', async(req, res) => {
 
   try {
@@ -101,5 +127,6 @@ router.post('/',
 
     }
   )
+
 
 module.exports = router

@@ -1,7 +1,9 @@
-import React, {useCallback, createRef, useEffect } from 'react';
+import React, {useCallback, createRef, useEffect,useContext } from 'react';
 import TournamentTableItem from './TournamentTableItem';
 import Scrollbar from '../Scrollbar'
 import AnimatedList from '../AnimatedList';
+import PageContext from '../../pages/PageContext';
+
 
 
 
@@ -23,6 +25,9 @@ const TournamentTable = ({swiper}) => {
     {name: 'Команда 12', password: true, status: 2, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
     {name: 'Команда 13', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
   ]
+
+  const {command} = useContext(PageContext);
+  
 
   const listRef = createRef();
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Parallax, Autoplay } from 'swiper';
+import axios from 'axios';
 import SlideContent from './slide';
 import {useHttp} from '../../hooks/http.hook'
 
@@ -14,12 +15,16 @@ SwiperCore.use([Navigation, Pagination, Parallax, Autoplay]);
 export default () => {
 
   const [slides, setSlides] = useState([]);
-  const { loading, request, error, clearError } = useHttp();
+  const [error, setError] = useState(false);
   const [swiper,setSwiper] = useState(false);
 
   useEffect(async()=>{
-    const data = await request('/tournaments/main-slider');
-    setSlides(data);
+    axios.get('/tournaments/main-slider')
+    .then(({data})=>setSlides(data))
+    .catch(e => {
+      console.error(e);
+      setError(e)
+    })
   },[])
 
   useEffect(()=>{
@@ -28,12 +33,6 @@ export default () => {
       swiper.slideTo(1,0);
     }  
   },[slides,swiper])
-  
-  
-  useEffect(()=>{
-    // if(data) console.log(data);
-    if(error) console.error(error)
-  },[request,error])
 
   return (
     <Swiper

@@ -6,9 +6,19 @@ module.exports = (sequelize, DataTypes) => {
   class Command extends Model { 
     static associate(models) {
       // Command.hasMany(models.CommandUser, { foreignKey: 'id' });
-      Command.hasMany(models.CommandUser, {
+      // Command.hasMany(models.CommandUser, {
+      //   foreignKey: 'id',
+      //   as: 'command_user'
+      // });
+      Command.belongsToMany(models.Tournaments, {
+        through: "CommandTour",
         foreignKey: 'id_command',
-        as: 'command_user'
+        as: 'tour'
+      });
+      Command.belongsToMany(models.UserAuth, {
+        through: "CommandUser",
+        foreignKey: 'id_command',
+        as: 'user'
       });
   } };
   Command.init({
