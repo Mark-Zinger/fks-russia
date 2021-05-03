@@ -42,26 +42,17 @@ router.get('/:id?', async(req, res) => {
     const id_team =  req.params.id ? req.params.id : false;
 
     const dbQuery = {
-      attributes: ['id_command', 'id_tour'],
+      model: Command, 
+      as: 'command',
+      attributes: ['id','name', 'password'],
       include: [
         {
-          model: Command, 
-          as: 'command',
-          attributes: ['name', 'password'],
-          include: [
-            {
-              model: CommandUser,
-              as: 'command_user',
-              attributes: ['isAdmin'],
-              include: [
-                {
-                  model: UserAuth, 
-                  as: 'user',
-                  attributes: ['id','username','avatar'],
-                }
-              ]
-            }
-          ]
+          model: UserAuth,
+          as: 'user',
+          attributes: ['id','username','avatar'],
+          through: {
+            attributes: ['isAdmin']
+          }
         },
         {
           model: Tournaments, 
@@ -72,13 +63,13 @@ router.get('/:id?', async(req, res) => {
     }
 
     const where = {}
-    if(id_team) where['$command.id$'] = id_team;
+    if(id_team) where['id'] = id_team;
     if(game) where['$tour.id_game$'] = game;
-    if(search) where['$command.name$'] = {[Op.like]: `%${search}%`};;
+    if(search) where['name'] = {[Op.like]: `%${search}%`};;
     
     dbQuery.where = where;
 
-    const teams = await CommandTour.findAll(dbQuery);
+    const teams = await Command[id_team?'findOne':'findAll'](dbQuery);
     res.json(teams);
   } catch (e) {
     res.status(500).json(e);

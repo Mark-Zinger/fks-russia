@@ -23,10 +23,13 @@ export default () => {
     if(search.trim()) params.search = search;
     if(game) params.game = game;
     
-    const {data} = await axios.get('/teams',{params})
-    console.log({data});
-    setList([]);
-    requestAnimationFrame(() =>setList(data))
+    axios.get('/teams',{params})
+    .then(({data})=> {
+      setList([]);
+      console.log(data)
+      requestAnimationFrame(() =>setList(data))
+    })
+    .catch(console.error)
 
   },[searchQuery])
 

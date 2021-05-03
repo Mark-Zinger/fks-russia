@@ -10,21 +10,6 @@ import PageContext from '../../pages/PageContext';
 
 const TournamentTable = ({swiper}) => {
   
-  const list = [
-    {name: 'Команда 1', password: true, status: 0, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 2', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 3', password: true, status: 2, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 4', password: true, status: 2, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 5', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 6', password: true, status: 0, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 7', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 8', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 9', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 10', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 11', password: true, status: 2, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 12', password: true, status: 2, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-    {name: 'Команда 13', password: true, status: 1, teamAvatar: '/resources/images/user_avatar/test_avatar.png',},
-  ]
 
   const {command} = useContext(PageContext);
   
@@ -61,19 +46,13 @@ const TournamentTable = ({swiper}) => {
         <div className="tournament-table__header-status">Статус участия</div>
       </div>
       <Scrollbar>
-        <AnimatedList 
-          className="tournament-table__list"
-          animate={i => ({
-            opacity: [0,1], 
-            y: [-5,0],
-            transition: { delay: i * 0.2+0.1 }
-          })}
+        <div className="tournament-table__list"
         >
           {
             command && command[0] && 
             command.map((el,i) => <TournamentTableItem {...el} key={i} custom={i}/>)
           }
-        </AnimatedList>
+        </div>
       </Scrollbar>
     </div>
   )

@@ -11,8 +11,8 @@ export default function UserTable({users=[]}) {
      { users[0] && users
       .map((el, i)=>(
         <User key={i}>
-          <Avatar src={el.user.avatar}/>
-          <Nickname>{el.user.username}{el.isAdmin && <StarIcon/>}</Nickname>
+          <Avatar src={el?.avatar}/>
+          <Nickname>{el.username}{el.CommandUser.isAdmin && <StarIcon/>}</Nickname>
         </User>
       ))
      }

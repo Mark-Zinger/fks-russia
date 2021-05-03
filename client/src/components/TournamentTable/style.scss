@@ -39,6 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: black;
     
     min-height: 55px;
     padding: 10px;
@@ -56,7 +57,7 @@
     margin-right: 10px;
   }
   &__name {
-    margin-right: 54%;
+    width: 100%;
     display: flex;
     align-items: center;
   }
