@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../features/userSlice';
 import HeaderUser from '../HeaderUser'
 import AuthModal from './AuthModal'
+import AppContext from '../../context/AppContext'
 
 const AuthBar = (params) => {
   const {isSuccess} = useSelector(userSelector)
-  const [isOpen, setIsOpen] = useState(false);
+  const {isOpenAuthModal, setIsOpenAuthModal} = useContext(AppContext);
+  const [isOpen, setIsOpen] = [isOpenAuthModal, setIsOpenAuthModal]
 
   return (
     <>
