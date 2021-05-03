@@ -10,9 +10,11 @@ const TournamentTableItem = (props) => {
     name="загрузка...", 
     custom,
     teamAvatar='',
-    status
+    CommandTour: {confirm='' , createdAt=''}
 
   } = props;
+
+  console.log('test',props)
 
   return (
     <ListItem className="tournament-table__item" custom={custom}>
@@ -21,11 +23,11 @@ const TournamentTableItem = (props) => {
         {name}
       </div>
       <div className="tournament-table__date">
-        24.03.2021
+        {createdAt}
       </div>
-      <div className={`tournament-table__status tournament-table__status_${status}` }>
+      <div className={`tournament-table__status tournament-table__status_${confirm}` }>
         {
-          StatusAlias[status]
+          StatusAlias[parseInt(confirm)]
         }
       </div>
     </ListItem>

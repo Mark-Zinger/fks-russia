@@ -29,7 +29,11 @@ module.exports = {
         type: Sequelize.STRING(1),
         defaultValue: '0'
       },
-      createdAt: Sequelize.DATE,
+      createdAt: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+        defaultValue: Sequelize.fn('now')
+      }
     });
   },
   down: function(queryInterface, Sequelize) {

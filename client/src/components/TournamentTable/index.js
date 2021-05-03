@@ -70,8 +70,8 @@ const TournamentTable = ({swiper}) => {
           })}
         >
           {
-            list && list[0] && 
-            list.map((el,i) => <TournamentTableItem {...el} key={i} custom={i}/>)
+            command && command[0] && 
+            command.map((el,i) => <TournamentTableItem {...el} key={i} custom={i}/>)
           }
         </AnimatedList>
       </Scrollbar>
