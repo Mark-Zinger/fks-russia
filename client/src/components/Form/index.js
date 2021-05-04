@@ -1,8 +1,10 @@
 import React, { useState,createContext, useCallback } from "react";
-import encodeURIHelper from '../../common/helpers/encodeURIHelper'
+import encodeURIHelper from '../../common/helpers/encodeURIHelper';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../../features/userSlice';
 import axios from "axios";
 import { useEffect } from "react";
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const FormContext = createContext();
 
@@ -17,19 +19,24 @@ export default (props) => {
   const [formData, setFormData] = useState({});
   const [isFetching, setIsFetching] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState("Ошибка");
- 
+  const [error, setError] = useState(false);
+  const {token} = useSelector(userSelector)
+
   const onSubmit = useCallback((e) => {
     e.preventDefault()
     setIsFetching(true)
+    setError(false)
     axios({
       method,
       url: action,
-      data:  encodeURIHelper(formData),
+      data:  encodeURIHelper({...formData, token}),
     })
-    .then( ({data}) => onSuccess && onSuccess(data))
+    .then( ({data}) => {
+      onSuccess && onSuccess(data)
+    })
     .catch( error => {
       onError && onError(error);
+      setError(error.messege)
       console.error(error)
     })
     .finally(()=> setIsFetching(false));
@@ -56,9 +63,9 @@ export default (props) => {
 
 const ErrorMessege = styled.h3`
   margin: 0;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
   text-align: center;
   color: red;
   position: relative;
-  top: -25px;
+  top: -40px;
 `

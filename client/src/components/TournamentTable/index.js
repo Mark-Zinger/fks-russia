@@ -3,6 +3,7 @@ import TournamentTableItem from './TournamentTableItem';
 import Scrollbar from '../Scrollbar'
 import AnimatedList from '../AnimatedList';
 import PageContext from '../../pages/PageContext';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -49,8 +50,12 @@ const TournamentTable = ({swiper}) => {
         <div className="tournament-table__list"
         >
           {
-            command && command[0] && 
-            command.map((el,i) => <TournamentTableItem {...el} key={i} custom={i}/>)
+            (command && command[0]) 
+            ? command.map((el,i) => <TournamentTableItem {...el} key={i} custom={i}/>)
+            : <div className="tournament-table__non-items">
+                Ни одна команда пока не подала заявку на участие в турнире<br/>
+                <Button onClick={()=>swiper.slideTo(0)}>Подать заявку</Button>
+              </div>
           }
         </div>
       </Scrollbar>

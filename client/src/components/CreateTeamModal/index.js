@@ -1,40 +1,32 @@
 import React, { useState, useContext } from 'react';
 import Modal from '../Modal';
-import Input from '../Input';
+import ModalTitle from '../ModalTitle'
 import { Error } from '../AuthBar/AuthModalLayout';
-import SubmitButton from '../SubmitButton'
+import Form from '../Form'
+import Input from '../Input2'
+import Submit from '../SubmitButton2'
 import {AlertContext} from '../Alert'
 
 
 
 const CreateTeamModal = (props) => {
   
-  // const {showModal, closeModal} = props;
-  const [errorMessege, setErrorMessege] = useState('');
   const {createAlert} = useContext(AlertContext);
   // const
+  const onSuccess = () => {}
+  const onError = () => {}
 
   return (
     <>
     <Modal {...props}>
       <div className="modal__title">
         Создать команду
-        <Error messege={errorMessege}/>
       </div>
-      <form>
-          <Input 
-            placeholder={"Имя команды"} 
-            name="name" 
-          />
-          <Input 
-            placeholder={"Пароль (Необязательно)"} 
-            name="password"
-            type="password"
-          />
-          <SubmitButton
-            onClick={() => createAlert({messege: "Вы подали заявку на участие"})}
-          >Создать команду</SubmitButton>
-        </form>
+      <Form action="/teams/join" {...{onSuccess,onError}}>
+        <Input name="name" placeholder="Имя команды"/>
+        <Input name="password" type="password" placeholder="Пароль (Необязательно)"/>
+        <Submit>Создать команду</Submit>
+      </Form>
     </Modal>
 
     </>

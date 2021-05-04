@@ -15,7 +15,7 @@ export default ({children, ...props}) => {
         color="primary"
         {...props}
       >
-        {isFetching ? <CircularProgress size={25} color="white"/> : 'Вступить в команду'}
+        {isFetching ? <CircularProgress size={25} color="white"/> : <>{children}</>}
         <input style={{display:'none'}} type="submit" value="Send Request"/>
       </SubmitButton>
   )

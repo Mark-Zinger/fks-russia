@@ -19,8 +19,8 @@ const TournamentTableItem = (props) => {
   console.log('test',props)
 
   return (
-    <Link to={`/teams/${id}`}>
-      <div className="tournament-table__item" custom={custom}>
+    <>
+      <Link to={`/teams/${id}`} className="tournament-table__item" custom={custom}>
         <div className="tournament-table__name">
           <img src={teamAvatar} className="tournament-table__avatar" alt=""/>
           {name}
@@ -33,8 +33,8 @@ const TournamentTableItem = (props) => {
             StatusAlias[parseInt(confirm)]
           }
         </div>
-      </div>
-    </Link>
+      </Link>
+    </>
   )
 
 }

@@ -25,7 +25,7 @@ export default (props) => {
       <ModalTitle>Вступить в команду</ModalTitle>
       <Form action="/teams/join" {...{onSuccess,onError}}>
         <Input name="password" type="password" placeholder="Пароль"/>
-        <Submit/>
+        <Submit>Вступить в команду</Submit>
       </Form>
     </Modal>
   )

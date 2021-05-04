@@ -3,18 +3,21 @@ import { createSlice } from '@reduxjs/toolkit';
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    // openModal: () => console.log('Функция не определена'),
-    value: 1
+    isOpen: false,
   },
   reducers: {
-    // setOpenModal: (state, action) => {
-    //   state.openModal = action.payload;
-    // },
+    setOpen: (state, action) => {
+      state.isOpen = action.payload;
+    },
+    setClose: (state) => {
+      state.isOpen = false
+    },
+
   },
 });
 
-export const { setOpenModal } = authSlice.actions;
+export const { setOpen, setClose } = authSlice.actions;
 
-export const selectCount = state => state.auth.openModal;
+export const AuthModalSelector = state => state.auth;
 
 export default authSlice.reducer;

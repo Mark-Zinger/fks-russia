@@ -18,7 +18,7 @@ export default (params) => {
             <path d="M183 81.5L179.5 71C203 71 244.5 56 244.5 56C244.5 56 231 73.5 183 81.5Z" fill="white"/>
             <path fillRule="evenodd" clipRule="evenodd" d="M110.5 94L145 9.5L179.5 94L145 77.5L110.5 94ZM145 31L128 75L145 65L162 75L145 31Z" fill="white"/>
         </svg>
-        <div className="logo__title">ФКС РОССИИ</div>
+        <div className="logo__title">ФКС РОССИЯ</div>
         </div>
     )
 }

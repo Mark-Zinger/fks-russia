@@ -20,7 +20,7 @@ export default (props) => {
 
 
   return (
-    <Link to={`tournaments/${href}`} className="tournament-list__item-link">
+    <Link to={`/tournaments/${href}`} className="tournament-list__item-link">
       <div className="tournament-list__item-background-container" {...own} >
         <img src={backgroundURL} className="tournament-list__item-background" alt=""/>
       </div>

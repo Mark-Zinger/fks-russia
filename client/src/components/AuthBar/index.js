@@ -1,14 +1,22 @@
 import React, { useState, useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { userSelector } from '../../features/userSlice';
+import { AuthModalSelector } from '../../features/authSlice'
 import HeaderUser from '../HeaderUser'
 import AuthModal from './AuthModal'
-import AppContext from '../../context/AppContext'
+import AppContext from '../../context/AppContext';
+import {setOpen,setClose as setCloseInst} from '../../features/authSlice';
+
 
 const AuthBar = (params) => {
-  const {isSuccess} = useSelector(userSelector)
-  const {isOpenAuthModal, setIsOpenAuthModal} = useContext(AppContext);
-  const [isOpen, setIsOpen] = [isOpenAuthModal, setIsOpenAuthModal]
+  const {isSuccess} = useSelector(userSelector);
+  const {isOpen} = useSelector(AuthModalSelector);
+  const dispatch = useDispatch();
+
+  const setIsOpen = (tab) => dispatch(setOpen(tab));
+  const setClose = () => dispatch(setCloseInst());
+
+  window.setClose = setClose;
 
   return (
     <>
@@ -22,7 +30,7 @@ const AuthBar = (params) => {
         : ( <HeaderUser/> )
       }
       
-    <AuthModal showModal={isOpen} closeModal={()=>setIsOpen(false)}/>
+    <AuthModal showModal={isOpen} closeModal={()=>setClose()}/>
     </>
   )
 }
