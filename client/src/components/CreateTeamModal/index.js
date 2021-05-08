@@ -3,22 +3,22 @@ import Modal from '../Modal';
 import Form from '../Form'
 import Input from '../Input2'
 import Submit from '../SubmitButton2'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 
 
 const CreateTeamModal = (props) => {
   
-  // const {createAlert} = useContext(AlertContext);
-  // const
+  const location = useLocation();
+  const history = useHistory();
+
   const onSuccess = (e) => {
-    console.log(e)
     window.createAlert({messege:"Команда создана, вы подали заявку на участие в турнире"})
+    if(e.team.id) history.push(`/teams/${e.team.id}`)
   }
   const onError = (e) => {
     console.log(e)
     window.createAlert({level:'error', messege:"Что то пошло не так :("})
   }
-  const location = useLocation();
 
   return (
     <>

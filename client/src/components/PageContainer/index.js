@@ -23,23 +23,12 @@ const thumbnailVariants = {
 export default (props) => {
     
     const {children, title=false, background=false,className, ...own} = props;
-    const [alertProps, setAlert] = useState({
-      level: false, 
-      messege: null,
-      hash: Math.random()
-    })
+
     const {pathname} = useLocation();
     const pageName = pathname.split('/')[1];
 
-    const createAlert = ({level='success', messege='Hello World'}) => setAlert({level, messege,  hash: Math.random()});
-    const clearAlert = () => setAlert({level:'info', messege: false});
-    window.createAlert = createAlert;
-    // 'success' | 'info' | 'warning' | 'error';
-
-    window.createAlert = createAlert
-
     return (
-      <AlertContext.Provider value={{createAlert, clearAlert}}>
+      <>
         <motion.div 
           className={cn("page-container", className, pageName)}
           initial="initial"
@@ -52,8 +41,7 @@ export default (props) => {
               {children}
           </div>
         </motion.div>
-        <Alert {...alertProps}/>
-      </AlertContext.Provider>
+      </>
     )
 }
 
