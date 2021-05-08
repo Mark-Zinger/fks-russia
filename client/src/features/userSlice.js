@@ -187,6 +187,7 @@ export const userSlice = createSlice({
       state.username = payload.username;
       state.fullname = payload.fullname;
       state.avatar = payload.avatar;
+      state.token = payload.token;
     },
     [fetchUserBytoken.rejected]: (state, {payload}) => {
       console.log('fetchUserBytoken', payload);

@@ -21,6 +21,13 @@ export default forwardRef(({className,placeholder, children, ...ownProps}, ref) 
   }
   useEffect(() =>{
     if(insideRef.current.value.trim()) setIsFull(true);
+    if(!!(insideRef.current && setValue)){
+      const target = {
+        name: insideRef.current.name,
+        value: insideRef.current.value,
+      }
+      setValue({target});
+    }
   },[])
 
   return (

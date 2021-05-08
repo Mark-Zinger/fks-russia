@@ -32,7 +32,8 @@ export default (props) => {
     const pageName = pathname.split('/')[1];
 
     const createAlert = ({level='success', messege='Hello World'}) => setAlert({level, messege,  hash: Math.random()});
-    const clearAlert = () => setAlert({level:'info', messege: false})
+    const clearAlert = () => setAlert({level:'info', messege: false});
+    window.createAlert = createAlert;
     // 'success' | 'info' | 'warning' | 'error';
 
     window.createAlert = createAlert

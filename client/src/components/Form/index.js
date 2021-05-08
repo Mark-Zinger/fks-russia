@@ -25,6 +25,7 @@ export default (props) => {
   const onSubmit = useCallback((e) => {
     e.preventDefault()
     setIsFetching(true)
+
     setError(false)
     axios({
       method,
@@ -45,8 +46,9 @@ export default (props) => {
   useEffect(()=>console.log(formData),[formData])
 
   const setValue = useCallback((e) => {
+    const {name, value} = e.target;
     const newFormData = {...formData};
-    newFormData[e.target.name] = e.target.value;
+    newFormData[name] = value;
     setFormData(newFormData);
   },[formData])
 

@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextBlock from '../TextBlock';
 import CreateTeamModal from '../CreateTeamModal';
+import {useAuth} from '../../hooks/auth.hook'
 
+//655642
 
 const TournamentRister = (params) => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const isAuth = useAuth();
 
   return (
     <div 
@@ -30,8 +33,10 @@ const TournamentRister = (params) => {
           {/* </Link> */}
           <Button
             variant="contained" color="primary" button
-            onClick={()=> setIsOpenModal(true)}
-          >Создать команду</Button>
+            onClick={()=>isAuth(()=>setIsOpenModal(true))}
+          >
+            Создать команду
+          </Button>
           <CreateTeamModal
             showModal={isOpenModal}
             closeModal={()=> setIsOpenModal(false)}

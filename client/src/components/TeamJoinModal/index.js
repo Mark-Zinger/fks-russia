@@ -5,6 +5,7 @@ import Input from '../Input2'
 import Submit from '../SubmitButton2'
 import ModalTitle from '../ModalTitle'
 import { AlertContext } from '../Alert'
+import AuthOnlyContent from '../AuthOnlyContent'
 
 export default (props) => {
   
@@ -13,7 +14,6 @@ export default (props) => {
   } = props
 
   const {createAlert} = useContext(AlertContext);
-
   const onSuccess = (data) => { 
     createAlert({messege:data});
     setTimeout(()=>closeModal(), 500);
@@ -21,12 +21,17 @@ export default (props) => {
   const onError = (error) => { console.error(error)}
 
   return (
-    <Modal {...props}>
-      <ModalTitle>Вступить в команду</ModalTitle>
-      <Form action="/teams/join" {...{onSuccess,onError}}>
-        <Input name="password" type="password" placeholder="Пароль"/>
-        <Submit>Вступить в команду</Submit>
-      </Form>
-    </Modal>
+    <>
+      {
+  
+        <Modal {...props}>
+        <ModalTitle>Вступить в команду</ModalTitle>
+        <Form action="/teams/join" {...{onSuccess,onError}}>
+          <Input name="password" type="password" placeholder="Пароль"/>
+          <Submit>Вступить в команду</Submit>
+        </Form>
+      </Modal>
+      }
+    </>
   )
 }

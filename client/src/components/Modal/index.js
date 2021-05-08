@@ -1,9 +1,9 @@
-import React, {useEffect,createRef} from "react";
+import React, {useEffect,createRef,useContext} from "react";
 import {createPortal} from 'react-dom'; 
-import { AnimatePresence, motion } from "framer-motion";  
+import { AnimatePresence, motion } from "framer-motion";
 
 
-const   Modal = ({ showModal, children, closeModal, className, ...ownProps }) => { 
+const Modal = ({ showModal, children, closeModal, className, ...ownProps }) => { 
 
     useEffect(()=>{
         document.body.classList[showModal?'add':'remove']('lock-scroll');

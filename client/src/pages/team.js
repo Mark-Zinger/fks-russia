@@ -10,6 +10,7 @@ import ListItem from '../components/AnimatedList/list-item';
 import TournamentItem from '../components/TournamentItem';
 import TournamentsList from '../components/AnimatedList';
 import styled from 'styled-components';
+import {useAuth} from '../hooks/auth.hook'
 import axios from 'axios';
 
 // export const TournamentConetext = createContext();
@@ -26,11 +27,20 @@ export default (props) => {
     .catch(console.error)
   },[])
 
+  const isAuth = useAuth();
+
   useEffect(()=>console.log(team),[team])
+  let background;
+  console.log({team})
+  if( team && team.tour[0]) {
+    background = team.tour[0].backgroundURL
+  } else {
+    background = "/resources/images/background/csgo_2.jpg";  
+  }
 
   return (
     <PageContainer 
-      background={team && team.tour[0].backgroundURL}
+      background={background}
       className="page-container_tournament"
     >
       <PageContext.Provider value={{...team}}>
@@ -40,7 +50,7 @@ export default (props) => {
           <Button 
             variant="contained" 
             color="default"
-            onClick={()=> setShowModal(true)}
+            onClick={()=> isAuth(()=>setShowModal(true))}
           >
             Вступить в команду
           </Button>

@@ -124,7 +124,7 @@ router.post(
 
   try {
     const {token} = req.body
-    console.log(token);
+    // console.log(token);
     let user = null;
 
     const verifyToken = jwt.verify( token, config.get('jwtSecret'))
@@ -133,10 +133,8 @@ router.post(
       [user] = await UserAuth.findAll({ where: {id: verifyToken.userId} })
     }
 
-    res.json(user)
-
     if(user) {
-      res.json(user)
+      res.json({...user.dataValues,token})
     } else {
       res.status(403).json({messege: 'invalid Token'})
     }

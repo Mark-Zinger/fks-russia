@@ -1,7 +1,10 @@
 const {Router, request} = require('express');
+const config = require('config');
+const bcrypt = require('bcryptjs');
 const { Command, CommandUser, UserAuth, CommandTour,Tournaments, Game  } = require('../models');
 const Sequelize = require('sequelize');
 const {check, validationResult} = require('express-validator');
+const jwt = require('jsonwebtoken')
 const Op = Sequelize.Op;
 
 
@@ -79,26 +82,51 @@ router.get('/:id?', async(req, res) => {
 router.post('/',
   [
     check('name', 'Введите имя команды').isLength({ min: 6 }),
-    check('id_user', 'Для создания команды нужно авторизироваться').exists()
+    check('token', 'Для создания команды нужно авторизироваться').exists()
   ],
     async(req, res) => {
       try {
-        const {name, password=null, id_user} = req.body;
+        const {name, password=null, token,id_tour} = req.body;
+
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+          return res.status(400).json(errors.array())
+        }
+
+        const verifyToken = jwt.verify( token, config.get('jwtSecret'))
+        if(!verifyToken) res.status(400).json({messege: "Для создания команды нужно авторизироваться"})
+        const {userId} = verifyToken;
 
         const candidate = await Command.findOne({where: {name}});
         if(candidate) res.status(403).json({messege: "Команда с таки именем уже существует"});
 
-        const team = await Command.create({ name, password});
-        if(team) {
-          const commandUser = await CommandUser.create({
-            isAdmin: true,
+        let HashPass = password ? await bcrypt.hash(password, 12) : null;
+
+        const team = await Command.create({ 
+          name, 
+          password: HashPass
+        });
+
+        let commandTour = null
+
+        // res.send(typeof id_tour)
+        if(id_tour) {
+        
+          commandTour = await CommandTour.create({
             id_command: team.id,
-            id_user
-          }) 
+            id_tour: parseInt(id_tour)
+          })
         }
 
+        const commandUser = await CommandUser.create({
+          isAdmin: true,
+          id_command: team.id,
+          id_user: userId
+        }) 
+        
 
-        res.json(team)
+
+        res.json({team,commandUser, commandTour})
       } catch (e) {
         console.log(e);
         res.status(500).json(e)
@@ -115,7 +143,6 @@ router.post('/',
         console.log(e);
         res.status(500).json(e)
       }
-
     }
   )
 
