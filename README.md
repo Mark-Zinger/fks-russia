@@ -42,9 +42,4 @@ npm install
 cd ../
 npm run dev
 ```
-### Второй спопсоб
-```bash
-# Всё тоже самое в одной команде
-npm run quickstart
-```
 
