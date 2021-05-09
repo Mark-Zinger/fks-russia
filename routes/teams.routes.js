@@ -109,7 +109,6 @@ router.post('/',
 
         let commandTour = null
 
-        // res.send(typeof id_tour)
         if(id_tour) {
         
           commandTour = await CommandTour.create({
@@ -124,8 +123,6 @@ router.post('/',
           id_user: userId
         }) 
         
-
-
         res.json({team,commandUser, commandTour})
       } catch (e) {
         console.log(e);
@@ -138,7 +135,40 @@ router.post('/',
   router.post('/join',
     async(req, res) => {
       try {
-        res.send('Вы стали участником команды')
+        const {id_command, password=null, token} = req.body;
+        const {userId} = jwt.verify( token, config.get('jwtSecret'))
+        if(!userId) res.status(500).json({messege: 'Пользователь не авторизирован'});
+
+        const command = await Command.findOne({
+          where: {id: id_command},
+          include: [
+            {
+              model: UserAuth,
+              as: 'user',
+              attributes: ['id','username','avatar'],
+              through: {attributes: []}
+            },
+          ]
+        });
+        if(!command) res.status(500).json({messege: "Команда не найдена"});
+        if(command.user.find(el => el.id == userId)) res.status(500).json({messege: "Пользователь уже состоит в этой команде"});
+        if(command.user[4]) res.status(500).json({messege: "В команде превышено количество участников"});
+
+        if(command.password){
+          const isMatch = await bcrypt.compare(password, command.password)
+          if (!isMatch) {
+            return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
+          }
+        }
+
+        const commandUser = await CommandUser.create({
+          isAdmin: false,
+          id_command,
+          id_user: userId
+        })
+
+
+        res.json(commandUser)
       } catch (e) {
         console.log(e);
         res.status(500).json(e)

@@ -3,12 +3,12 @@ import Modal from '../Modal';
 import Form from '../Form'
 import Input from '../Input2'
 import Submit from '../SubmitButton2'
-import { useLocation, useHistory } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 
 const CreateTeamModal = (props) => {
   
-  const location = useLocation();
+  const {id} = useParams();
   const history = useHistory();
 
   const onSuccess = (e) => {
@@ -29,7 +29,7 @@ const CreateTeamModal = (props) => {
       <Form action="/teams/" {...{onSuccess,onError}}>
         <Input name="name" placeholder="Имя команды"/>
         <Input name="password" type="password" placeholder="Пароль (Необязательно)"/>
-        <Input name="id_tour" type="hidden" value={location.pathname.split('/')[2]}/>
+        <Input name="id_tour" type="hidden" value={id}/>
         <Submit>Создать команду</Submit>
       </Form>
     </Modal>

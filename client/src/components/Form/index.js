@@ -36,8 +36,9 @@ export default (props) => {
       onSuccess && onSuccess(data)
     })
     .catch( error => {
-      onError && onError(error);
-      setError(error.messege)
+      window.error = error
+      onError && onError(error.response.data);
+      setError(error.response.data.messege)
       console.error(error)
     })
     .finally(()=> setIsFetching(false));
