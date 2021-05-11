@@ -21,15 +21,6 @@ const App = () => {
 
     const history = createHashHistory();
 
-    // React.useEffect(() => {
-    //     console.log(history)
-    // }, history)
-
-    React.useEffect(() => {
-        console.log('helllo')
-        window.addEventListener("hashchange", (e)=>console.log('hashchange'), false);
-    },[])
-
     return  <Provider
         store={createAdminStore({
             authProvider,

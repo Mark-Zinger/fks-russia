@@ -180,7 +180,24 @@ router.post('/kick',async (req, res)=> {
     const {id_command, token, id_kick=false} = req.body;
     // const {userId} = jwt.verify( token, config.get('jwtSecret'));
     const userId = token;
-    const teamUsers = await CommandUser.findAll({ where: {id_command}});
+    const allUsers = await CommandUser.findAll({ where: {id_command}});
+    const admin = allUsers.find(el => el.isAdmin); // Find Admin
+    const condidateToKick = allUsers.find(el => el.id_user == id_kick);
+    const condidateIsAdmin = condidateToKick.isAdmin; 
+
+    if(admin.id_user == userId) { // if admin is admin
+      // delete Admin from CommandUser
+      // await CommandUser.destroy({where:{id_command, id_user: id_kick}});
+      const newAdmin = allUsers.find(el => !el.isAdmin).dataValues;
+      console.log({newAdmin})
+      if(newAdmin) {
+        const test = await CommandUser.update(
+         { isAdmin: true }, {where:{id_command, id_user: newAdmin.id_user}}
+        );
+        res.json({test})
+      }
+    }
+
     if(!userId) res.status(403).json({messege: 'Пользователь не авторизирован'});
     if (id_kick == userId) {
       const deletedUser = await CommandUser.destroy({where:{id_command, id_user: id_kick}});
@@ -188,8 +205,7 @@ router.post('/kick',async (req, res)=> {
     } 
 
     // if(!admin) res.status(404).json({messege: 'Пользователь не состоит в команде'});
-    const admin = teamUsers.find(el => el.isAdmin); // Find Admin
-    res.json(admin)
+    res.json(condidateToKick)
     if(admin.isAdmin) {  
 
     } else {
