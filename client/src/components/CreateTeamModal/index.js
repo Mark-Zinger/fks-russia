@@ -16,8 +16,8 @@ const CreateTeamModal = (props) => {
     if(e.team.id) history.push(`/teams/${e.team.id}`)
   }
   const onError = (e) => {
-    console.log(e)
-    window.createAlert({level:'error', messege:"Что то пошло не так :("})
+    // console.log(e)
+    // window.createAlert({level:'error', messege:"Что то пошло не так :("})
   }
 
   return (

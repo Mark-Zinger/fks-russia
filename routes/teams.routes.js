@@ -68,7 +68,7 @@ router.get('/:id?', async(req, res) => {
     const where = {}
     if(id_team) where['id'] = id_team;
     if(game) where['$tour.id_game$'] = game;
-    if(search) where['name'] = {[Op.like]: `%${search}%`};;
+    if(search) where['name'] = {[Op.like]: `%${search}%`};
     
     dbQuery.where = where;
 
@@ -81,7 +81,7 @@ router.get('/:id?', async(req, res) => {
 
 router.post('/',
   [
-    check('name', 'Введите имя команды').isLength({ min: 6 }),
+    check('name', 'Имя команды должно быть не меньше 6 симвовол').isLength({ min: 6 }),
     check('token', 'Для создания команды нужно авторизироваться').exists()
   ],
     async(req, res) => {
@@ -128,7 +128,6 @@ router.post('/',
         console.log(e);
         res.status(500).json(e)
       }
-
     }
   )
 
@@ -136,7 +135,7 @@ router.post('/',
     async(req, res) => {
       try {
         const {id_command, password=null, token} = req.body;
-        const {userId} = jwt.verify( token, config.get('jwtSecret'))
+        const {userId} = jwt.verify( token, config.get('jwtSecret'));
         if(!userId) res.status(500).json({messege: 'Пользователь не авторизирован'});
 
         const command = await Command.findOne({
@@ -150,11 +149,12 @@ router.post('/',
             },
           ]
         });
+        // Проверка команды
         if(!command) res.status(500).json({messege: "Команда не найдена"});
         if(command.user.find(el => el.id == userId)) res.status(500).json({messege: "Пользователь уже состоит в этой команде"});
         if(command.user[4]) res.status(500).json({messege: "В команде превышено количество участников"});
 
-        if(command.password){
+        if(command.password){ // Проверка пароля
           const isMatch = await bcrypt.compare(password, command.password)
           if (!isMatch) {
             return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
@@ -167,7 +167,6 @@ router.post('/',
           id_user: userId
         })
 
-
         res.json(commandUser)
       } catch (e) {
         console.log(e);
@@ -176,5 +175,33 @@ router.post('/',
     }
   )
 
+router.post('/kick',async (req, res)=> {
+  try {
+    const {id_command, token, id_kick=false} = req.body;
+    // const {userId} = jwt.verify( token, config.get('jwtSecret'));
+    const userId = token;
+    const teamUsers = await CommandUser.findAll({ where: {id_command}});
+    if(!userId) res.status(403).json({messege: 'Пользователь не авторизирован'});
+    if (id_kick == userId) {
+      const deletedUser = await CommandUser.destroy({where:{id_command, id_user: id_kick}});
+      res.json(deletedUser);
+    } 
+
+    // if(!admin) res.status(404).json({messege: 'Пользователь не состоит в команде'});
+    const admin = teamUsers.find(el => el.isAdmin); // Find Admin
+    res.json(admin)
+    if(admin.isAdmin) {  
+
+    } else {
+      res.status(403).json({messege: 'Недостаточно прав'});
+    }
+
+
+    res.json(user)
+    
+  } catch (e) {
+    console.log(e);
+  }
+})
 
 module.exports = router

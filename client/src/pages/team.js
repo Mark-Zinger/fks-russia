@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import {useAuth} from '../hooks/auth.hook'
 import axios from 'axios';
 
+
 // export const TournamentConetext = createContext();
 
 export default (props) => {
@@ -83,7 +84,5 @@ export default (props) => {
 
 const Team = styled.div`
   min-height: 80vh;
-  /* display: flex;
-  flex-direction: column; */
   width: 100%;
 `

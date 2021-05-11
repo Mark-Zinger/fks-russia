@@ -21,9 +21,9 @@ const App = () => {
 
     const history = createHashHistory();
 
-    React.useEffect(() => {
-        console.log(history)
-    }, history)
+    // React.useEffect(() => {
+    //     console.log(history)
+    // }, history)
 
     React.useEffect(() => {
         console.log('helllo')

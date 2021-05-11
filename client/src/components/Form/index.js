@@ -20,7 +20,7 @@ export default (props) => {
   const [isFetching, setIsFetching] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const {token} = useSelector(userSelector)
+  const {token} = useSelector(userSelector);
 
   const onSubmit = useCallback((e) => {
     e.preventDefault()
@@ -38,13 +38,19 @@ export default (props) => {
     .catch( error => {
       window.error = error
       onError && onError(error.response.data);
-      setError(error.response.data.messege)
+      if (error.response.data instanceof Array) {
+        setError(error.response.data[0].msg)
+      } else {
+        setError(error.response.data.messege)
+      }
       console.error(error)
     })
     .finally(()=> setIsFetching(false));
   }, [formData]);
 
-  useEffect(()=>console.log(formData),[formData])
+  useEffect(()=>console.log(formData),[formData]);
+  useEffect(()=>console.log({error}),[error]);
+
 
   const setValue = useCallback((e) => {
     const {name, value} = e.target;

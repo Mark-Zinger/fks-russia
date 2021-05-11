@@ -40,10 +40,11 @@ router.post(
 
     const hashedPassword = await bcrypt.hash(password, 12)
     const user = await UserAuth.create({ 
-      ...req.body, 
+      avatar: "/resources/images/user_avatar/_default.png",
       password: hashedPassword,
-      role: 'user',
-      createAt: new Date()
+      role: '0',
+      createAt: new Date(),
+      ...req.body, 
     });
 
     user.dataValues.token = jwt.sign(
