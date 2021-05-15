@@ -178,45 +178,40 @@ router.post('/',
 router.post('/kick',async (req, res)=> {
   try {
     const {id_command, token, id_kick=false} = req.body;
-    // const {userId} = jwt.verify( token, config.get('jwtSecret'));
+    // const {userId=false} = jwt.verify( token, config.get('jwtSecret'));
     const userId = token;
     const allUsers = await CommandUser.findAll({ where: {id_command}});
-    const admin = allUsers.find(el => el.isAdmin); // Find Admin
-    const condidateToKick = allUsers.find(el => el.id_user == id_kick);
-    const condidateIsAdmin = condidateToKick.isAdmin; 
 
-    if(admin.id_user == userId) { // if admin is admin
-      // delete Admin from CommandUser
-      // await CommandUser.destroy({where:{id_command, id_user: id_kick}});
-      const newAdmin = allUsers.find(el => !el.isAdmin).dataValues;
-      console.log({newAdmin})
-      if(newAdmin) {
-        const test = await CommandUser.update(
-         { isAdmin: true }, {where:{id_command, id_user: newAdmin.id_user}}
-        );
-        res.json({test})
+    if(!userId) return res.status(404).json({message: "Пользователь не состоит в команде"});
+
+    const user = allUsers.find(el => el.dataValues.id_user == userId).dataValues; // Find User
+    const condidateToKick = allUsers.find(el => el.dataValues.id_user == id_kick);
+
+    if(!condidateToKick) return res.status(404).json({message: "Пользователь не состоит в команде"});
+
+    if(user){
+      const isAdmin = user.isAdmin;
+      if(isAdmin) {
+        if(condidateToKick.id_user == user.id_user) {
+          const newAdmin = allUsers.find(el => !el.dataValues.isAdmin);
+          if(newAdmin) {
+            
+          }
+          return res.json(newAdmin)
+        }
       }
-    }
-
-    if(!userId) res.status(403).json({messege: 'Пользователь не авторизирован'});
-    if (id_kick == userId) {
-      const deletedUser = await CommandUser.destroy({where:{id_command, id_user: id_kick}});
-      res.json(deletedUser);
-    } 
-
-    // if(!admin) res.status(404).json({messege: 'Пользователь не состоит в команде'});
-    res.json(condidateToKick)
-    if(admin.isAdmin) {  
+      res.json({isAdmin, condidateToKick})
+      return 
 
     } else {
-      res.status(403).json({messege: 'Недостаточно прав'});
+      res.status(404).json({message: "Пользователь не состоит в команде"});
+      return
     }
-
-
-    res.json(user)
     
   } catch (e) {
     console.log(e);
+    res.status(500).send({e})
+
   }
 })
 

@@ -8,15 +8,7 @@ import tours from './tours'
 import createAdminStore from './createAdminStore';
 import dataProvider from './dataProvider'
 import authProvider from './authProvider'
-
-
-
-// dependency injection
-// const dataProvider = restProvider('/');
-// const dataProvider = simpleRestProvider('http://localhost:3000');
-
-
-
+    
 const App = () => {
 
     const history = createHashHistory();
