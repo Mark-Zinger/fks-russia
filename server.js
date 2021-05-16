@@ -1,16 +1,14 @@
-const express = require('express')
-const config = require('config')
-const path = require('path')
+require('dotenv').config({path: './.env'});
+const express = require('express');
+const config = require('config');
+const path = require('path');
 const bodyParser = require('body-parser');
-const adminRoutes = require('./routes/admin.routes')
+const adminRoutes = require('./routes/admin.routes');
 
-const db = require('./models')
+const db = require('./models');
 
 
 const app = express()
-
-// app.use(express.json({ extended: true }))
-
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -24,6 +22,8 @@ adminRoutes(app)
 
 app.use('/resources', express.static(path.join(__dirname, '/resources')))
 
+console.log('env',process.env.NODE_ENV)
+ 
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'client', 'build')))
 
@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-const PORT =  5000
+const PORT =  5000;
 
 async function start() {
   try {

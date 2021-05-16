@@ -1,4 +1,6 @@
-{
+const logger = require('logger');
+
+module.exports = {
   "development": {
     "username": "mysql",
     "password": "mysql",
@@ -14,11 +16,14 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+
   "production": {
-    "username": "mysql",
-    "password": "mysql",
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": process.env.DB_USERNAME,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_NAME,
+    "host": process.env.DB_HOSTNAME,
+    "host": process.env.DB_PORT,
+    // logging: msg => logger.debug(msg),
     "dialect": "mysql"
   }
 }
