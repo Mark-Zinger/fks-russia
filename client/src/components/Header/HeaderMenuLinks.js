@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 const HeaderMenuLink = () => {
 
   const links = [
-      { title: 'НОВОСТИ', href: '/news'},
+     
       { title: 'ТУРНИРЫ', href: '/tournaments'},
       { title: 'КОМАНДЫ', href: '/teams'},
-      { title: 'НОВОСТИ', href: '/news'},
-      { title: 'ВИДЕО', href: '/news'},
+ 
 
   ];
 

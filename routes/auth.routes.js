@@ -58,7 +58,6 @@ router.post(
       user.dataValues.token = jwt.sign(
         { userId: user.dataValues.id },
         process.env.JWT_SECRET,
-        { expiresIn: "1m" }
       );
 
       // await mailSender({email,fullname});
